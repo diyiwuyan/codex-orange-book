@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codex 橙皮书 · 从安装到实战案例的全链路使用指南</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #fff8e1;
+    color: #2c2c2c;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 720px;
+    width: 100%;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(230, 81, 0, 0.12);
+    overflow: hidden;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    background: linear-gradient(135deg, #e65100 0%, #ff9800 100%);
+    padding: 60px 40px 50px;
+    text-align: center;
+    color: #fff;
+  }
+  .hero-sub {
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-size: 52px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .hero-book {
+    font-size: 28px;
+    font-weight: 700;
+    opacity: 0.95;
+    margin-bottom: 20px;
+  }
+  .hero-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    opacity: 0.9;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .hero-version {
+    margin-top: 24px;
+    display: inline-block;
+    padding: 4px 16px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  /* ===== Sections ===== */
+  .section {
+    padding: 36px 40px;
+  }
+  .section + .section {
+    border-top: 1px solid #fff3e0;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #e65100;
+    margin-bottom: 20px;
+    border-left: 4px solid #ff9800;
+    padding-left: 12px;
+  }
+
+  /* ===== TOC ===== */
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+  }
+  .toc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #fff8e1;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .toc-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: #ff9800;
+    color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* ===== Buttons ===== */
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .btn-primary {
+    background: #e65100;
+    color: #fff;
+  }
+  .btn-secondary {
+    background: #fff3e0;
+    color: #e65100;
+    border: 2px solid #ff9800;
+  }
+  .btn-meta {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.7;
+    margin-left: 4px;
+  }
+
+  /* ===== Info ===== */
+  .info-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .info-tag {
+    padding: 6px 14px;
+    background: #fff3e0;
+    border-radius: 20px;
+    font-size: 13px;
+    color: #5d4037;
+  }
+  .info-tag strong { color: #e65100; }
+
+  .pitfall-note {
+    background: #fff3e0;
+    border-left: 4px solid #ff9800;
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #5d4037;
+    margin-top: 12px;
+  }
+
+  /* ===== Footer ===== */
+  .footer {
+    background: #fafafa;
+    padding: 28px 40px;
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    line-height: 1.8;
+  }
+  .footer a {
+    color: #e65100;
+    text-decoration: none;
+  }
+  .footer-author {
+    font-weight: 700;
+    color: #5d4037;
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 40px 24px; }
+    .hero-title { font-size: 36px; }
+    .section { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-sub">CODEX · ORANGE BOOK · NON-OFFICIAL GUIDE</div>
+    <div class="hero-title">Codex</div>
+    <div class="hero-book">橙皮书</div>
+    <div class="hero-desc">从安装到实战案例的全链路使用指南<br/>写给开发者、办公人群与 AI 工具重度用户</div>
+    <div class="hero-version">v2.1 · 2026 · 07 · 64 Pages</div>
+  </div>
+
+  <!-- 阅读入口 -->
+  <div class="section">
+    <div class="section-title">📖 阅读入口</div>
+    <div class="btn-group">
+      <a href="Codex橙皮书.html" class="btn btn-primary">
+        📕 在线阅读
+        <span class="btn-meta">HTML 全文</span>
+      </a>
+      <a href="Codex橙皮书.pdf" class="btn btn-secondary" download>
+        ⬇ 下载 PDF
+        <span class="btn-meta">64 页 · 5MB</span>
+      </a>
+      <a href="https://github.com/diyiwuyan/codex-orange-book" class="btn btn-secondary" target="_blank">
+        ⭐ GitHub 仓库
+        <span class="btn-meta">源码 · Star</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- 本书内容 -->
+  <div class="section">
+    <div class="section-title">目录</div>
+    <div class="toc-grid">
+      <div class="toc-item"><span class="toc-num">0</span><span>使用说明 · 阅读路线 · 已知限制与诚实建议</span></div>
+      <div class="toc-item"><span class="toc-num">1</span><span>先搞懂 Codex 是什么：基础认知、与同类工具的区别</span></div>
+      <div class="toc-item"><span class="toc-num">2</span><span>安装、配置与界面认识：App / CLI / IDE Extension</span></div>
+      <div class="toc-item"><span class="toc-num">3</span><span>核心功能详解：对话、计划、插件、Skill、MCP、Git、记忆、自动化、云端</span></div>
+      <div class="toc-item"><span class="toc-num">4</span><span>标准工作流：从需求到交付的完整链路 + 8 个任务模板</span></div>
+      <div class="toc-item"><span class="toc-num">5</span><span>场景化最佳实践：新手第一周、做网站、做 PPT、代码审查</span></div>
+      <div class="toc-item"><span class="toc-num">6</span><span>实战案例库：产品官网、招商 PPT、宣传视频、代码审查、数据分析、自动化测试、技术文档</span></div>
+      <div class="toc-item"><span class="toc-num">A</span><span>附录：第三方模型接入、推荐 Skill 清单、指令速查表、常见问题避坑、版本记录</span></div>
+    </div>
+  </div>
+
+  <!-- 本书特点 -->
+  <div class="section">
+    <div class="section-title">本书特点</div>
+    <div class="info-row">
+      <div class="info-tag"><strong>7</strong> 个实战案例</div>
+      <div class="info-tag"><strong>8</strong> 个任务模板</div>
+      <div class="info-tag"><strong>64</strong> 页精炼内容</div>
+      <div class="info-tag">非官方 · 开源</div>
+    </div>
+    <div class="pitfall-note">
+      <strong>📝 不回避"坑"</strong><br/>
+      本书专门设有「已知限制与诚实建议」章节，诚实标注 Codex 的实际问题：1M 上下文实际可用约 258K、Windows Full Access 有删盘风险、Codex vs Claude Code 各有长短、额度消耗比预期快等。不修饰，不吹捧。
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-author">编著 · 武小森</div>
+    <div>非官方开源指南 · 不代表 OpenAI 官方文档或产品承诺</div>
+    <div style="margin-top: 8px;">
+      <a href="https://github.com/diyiwuyan/codex-orange-book">GitHub</a> · 
+      持续更新中 · 欢迎 Star ⭐
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codex 橙皮书</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #fff;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 50px;
+  }
+
+  /* ===== Cover Page ===== */
+  .cover {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    border-radius: 12px;
+    margin-bottom: 40px;
+    page-break-after: always;
+  }
+  .cover-sub {
+    font-size: 13px;
+    color: #e65100;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+  .cover-title {
+    font-size: 72px;
+    font-weight: 900;
+    color: #e65100;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .cover-sub2 {
+    font-size: 18px;
+    color: #bf360c;
+    margin-bottom: 30px;
+  }
+  .cover-line {
+    width: 80px;
+    height: 4px;
+    background: #e65100;
+    margin: 0 auto 30px;
+    border-radius: 2px;
+  }
+  .cover-book {
+    font-size: 42px;
+    font-weight: 900;
+    color: #e65100;
+    letter-spacing: 12px;
+    margin-bottom: 10px;
+  }
+  .cover-desc {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 6px;
+  }
+  .cover-desc2 {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 40px;
+  }
+  .cover-author {
+    font-size: 16px;
+    color: #e65100;
+    letter-spacing: 4px;
+    margin-bottom: 50px;
+  }
+  .cover-sections {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+  .cover-section {
+    font-size: 13px;
+    color: #555;
+    text-align: center;
+  }
+  .cover-section .cs-num {
+    display: block;
+    font-size: 22px;
+    font-weight: 900;
+    color: #e65100;
+    margin-bottom: 4px;
+  }
+  .cover-footer {
+    font-size: 14px;
+    color: #999;
+    letter-spacing: 2px;
+  }
+
+  /* ===== Typography ===== */
+  h1 {
+    font-size: 28px;
+    font-weight: 900;
+    color: #e65100;
+    border-bottom: 3px solid #ff9800;
+    padding-bottom: 10px;
+    margin: 48px 0 20px;
+    page-break-after: avoid;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #f57c00;
+    border-left: 5px solid #ff9800;
+    padding-left: 14px;
+    margin: 36px 0 14px;
+    page-break-after: avoid;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ef6c00;
+    margin: 28px 0 10px;
+    page-break-after: avoid;
+  }
+  h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e65100;
+    margin: 20px 0 8px;
+  }
+
+  p { margin: 10px 0; }
+
+  strong { color: #e65100; font-weight: 700; }
+
+  blockquote {
+    border-left: 4px solid #ff9800;
+    background: #fff8e1;
+    margin: 16px 0;
+    padding: 12px 18px;
+    border-radius: 0 8px 8px 0;
+    color: #5d4037;
+    font-style: italic;
+  }
+
+  code {
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 13px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    color: #d84315;
+  }
+
+  pre {
+    background: #263238;
+    color: #eceff1;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.6;
+    page-break-inside: avoid;
+  }
+  pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+
+  /* ===== Tables ===== */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
+    page-break-inside: avoid;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #eee;
+  }
+  tr:nth-child(even) td {
+    background: #fff8e1;
+  }
+
+  /* ===== Lists ===== */
+  ul, ol {
+    margin: 10px 0 10px 24px;
+  }
+  li { margin: 5px 0; }
+
+  /* ===== Horizontal Rule ===== */
+  hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, #ff9800, transparent);
+    margin: 36px 0;
+  }
+
+  /* ===== Page Break ===== */
+  .page-break {
+    page-break-after: always;
+  }
+
+  /* ===== Inline Images (in tables, blockquotes, etc.) ===== */
+  img.inline-img {
+    max-width: 100%;
+    max-height: 180px;
+    border-radius: 6px;
+    vertical-align: middle;
+  }
+
+  /* ===== Print Styles ===== */
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    body { padding: 0; }
+    .cover { page-break-after: always; padding: 40px 20px; }
+    .contact-page { padding: 30px 20px; }
+    pre, table, blockquote { page-break-inside: avoid; }
+    h1, h2, h3 { page-break-after: avoid; }
+    figure.img-figure img { max-width: 100%; }
+  }
+
+  /* ===== TOC (if present) ===== */
+  .toc { margin: 20px 0 40px; }
+  .toc h2 { border-left: none; padding-left: 0; }
+
+  /* ===== Contact Page ===== */
+  .contact-page {
+    text-align: center;
+    padding: 50px 30px 40px;
+    background: linear-gradient(135deg, #fff8e1 0%, #fff3e0 100%);
+    border-radius: 12px;
+    margin: 20px 0 40px;
+    page-break-after: always;
+  }
+  .contact-page h2 {
+    font-size: 26px;
+    border-left: none;
+    padding-left: 0;
+    color: #e65100;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .contact-page h3 {
+    font-size: 18px;
+    color: #f57c00;
+    margin-top: 28px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  .contact-page p,
+  .contact-page blockquote {
+    text-align: left;
+  }
+  .contact-page blockquote {
+    margin: 12px auto;
+    max-width: 500px;
+  }
+  .contact-page table {
+    width: 100%;
+    max-width: 680px;
+    margin: 16px auto;
+  }
+  .contact-page td {
+    text-align: center;
+    vertical-align: top;
+    padding: 8px;
+    border-bottom: none !important;
+    background: transparent !important;
+  }
+  .contact-page img {
+    max-width: 160px;
+    max-height: 160px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(230,81,0,0.12);
+  }
+  .contact-page figcaption {
+    display: none;
+  }
+
+  /* ===== Image Figures ===== */
+  figure.img-figure {
+    margin: 20px 0;
+    text-align: center;
+    page-break-inside: avoid;
+  }
+  figure.img-figure img {
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+  }
+  figure.img-figure figcaption {
+    font-size: 13px;
+    color: #888;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* ===== Codex 分页优化 v2 ===== */
+  /* 压缩标题和正文的间距，让整体排版更紧凑 */
+  h1 { page-break-before: auto; margin: 24px 0 12px; }
+  h2 { margin: 20px 0 10px; }
+  h3 { margin: 16px 0 8px; }
+  blockquote { padding: 10px 14px; margin: 12px 0; }
+  /* 只让"第X篇"和"附录"的 h1 新起一页 */
+  h1[id*="篇"], h1[id*="附录"] { page-break-before: always; margin-top: 24px; }
+  /* 使用说明单独起一页，保证 0.1/0.2/0.3 在同一页 */
+  h1[id*="0使用说明"] { page-break-before: always; margin-top: 24px; }
+  /* 联系方式页：新起一页，但不加 page-break-after（避免和下一篇 h1 的 page-break-before 叠加产生空白页） */
+  .contact-page { page-break-before: always; page-break-after: auto; }
+  /* h2/h3 标题不独占页底 */
+  h2, h3, h4 { page-break-after: avoid; }
+  /* 表格、代码块、引用块、图片尽量不跨页 */
+  .table-wrap, pre, blockquote, figure { page-break-inside: avoid; }
+  /* 段落不在页底/页首只剩一行 */
+  p { orphans: 2; widows: 2; }
+  /* no-break 容器：内容不跨页（用于使用说明的子节） */
+  .no-break { page-break-inside: avoid; }
+  /* 使用说明的 no-break 容器不强制（内容可能超一页，允许自然分页） */
+  .no-break.allow-break { page-break-inside: auto; }
+  /* hr 分隔线不在页首，同时缩小间距 */
+  hr { page-break-after: avoid; margin: 20px 0; }
+  /* 列表尽量不跨页 */
+  ul, ol { page-break-inside: auto; }
+  /* 避免标题 + 第一个元素分离 */
+  h2 + p, h2 + table, h2 + ul, h2 + ol, h2 + pre, h2 + blockquote,
+  h3 + p, h3 + table, h3 + ul, h3 + ol, h3 + pre, h3 + blockquote { page-break-before: avoid; }
+  /* 压缩联系方式页，让全部内容在一页内 */
+  .contact-page { padding: 16px 20px; margin: 0; page-break-inside: avoid; font-size: 14px; }
+  .contact-page h2 { margin-bottom: 8px; font-size: 22px; }
+  .contact-page h3 { margin-top: 12px; margin-bottom: 4px; font-size: 16px; }
+  .contact-page img { max-width: 90px; max-height: 90px; }
+  .contact-page blockquote { margin: 6px auto; padding: 6px 10px; font-size: 12px; }
+  .contact-page p { margin-bottom: 6px; }
+  .contact-page table { margin: 8px auto; }
+  .contact-page table td { padding: 4px; font-size: 12px; }
+  .contact-page a[style*="display:inline-block"] { padding: 6px 20px !important; font-size: 15px !important; margin: 8px 0 !important; }
+  .contact-page p[style*="border: 2px dashed"] { padding: 8px 14px !important; margin: 8px 0 !important; }
+  .contact-page p[style*="border: 2px dashed"] strong { font-size: 15px !important; }
+  .contact-page p[style*="border: 2px dashed"] br { display: none; }
+  .contact-page p[style*="border: 2px dashed"] br + br { display: none; }
+  /* 压缩标题页间距，让标题信息尽量集中在一页 */
+  #CODEXORANGEBOOK { margin-top: 0; margin-bottom: 12px; }
+  #Codex橙皮书从安装到实战案例的全链路使用指南 { margin-top: 8px; margin-bottom: 12px; }
+
+</style>
+</head>
+<body>
+
+    <div class="cover">
+      <div class="cover-sub">CODEX · ORANGE BOOK &nbsp;&nbsp;|&nbsp;&nbsp; NON-OFFICIAL GUIDE / 非官方指南</div>
+      <div class="cover-title">Codex</div>
+      <div class="cover-sub2">写给开发者、办公人群与 AI 工具重度用户的使用手册</div>
+      <div class="cover-line"></div>
+      <div class="cover-book">橙皮书</div>
+      <div class="cover-desc">从安装到实战案例的全链路使用指南</div>
+      <div class="cover-desc2">非官方开源指南 · 持续更新版</div>
+      <div class="cover-author">编 著 / BY 武小森</div>
+      <div class="cover-sections">
+        <div class="cover-section"><span class="cs-num">01</span>认识 Codex</div>
+        <div class="cover-section"><span class="cs-num">02</span>安装与配置</div>
+        <div class="cover-section"><span class="cs-num">03</span>核心功能</div>
+        <div class="cover-section"><span class="cs-num">04</span>标准工作流</div>
+        <div class="cover-section"><span class="cs-num">05</span>实战案例库</div>
+      </div>
+      <div class="cover-footer">v2.0 &nbsp;·&nbsp; 2026 · 07</div>
+    </div>
+    
+<h1 id="CODEXORANGEBOOK">CODEX · ORANGE BOOK</h1>
+<h2 id="NON-OFFICIALGUIDE非官方指南">NON-OFFICIAL GUIDE / 非官方指南</h2>
+<hr>
+<h2 id="橙皮书">橙皮书</h2>
+<h3 id="从安装到实战案例的全链路使用指南">从安装到实战案例的全链路使用指南</h3>
+<p><strong>非官方开源指南 · 持续更新版</strong></p>
+<p><strong>编 著 / BY 武小森</strong></p>
+<hr>
+<div class="table-wrap"><table>
+<tr><th>01</th><th>02</th><th>03</th><th>04</th><th>05</th></tr>
+<tr><td>认识 Codex</td><td>安装与配置</td><td>核心功能</td><td>标准工作流</td><td>实战案例库</td></tr>
+</table></div>
+<p>适合零基础上手、想把 Codex 接入真实工作流，以及希望系统化掌握 AI 编程智能体的开发者和内容创作者。</p>
+<p><strong>v2.0 · 2026 · 07</strong></p>
+<hr>
+<h1 id="Codex橙皮书从安装到实战案例的全链路使用指南">Codex 橙皮书：从安装到实战案例的全链路使用指南</h1>
+<h2 id="非官方开源指南持续更新版">非官方开源指南 · 持续更新版</h2>
+<h3 id="写给开发者创作者和AI工具重度用户的全功能使用手册">写给开发者、创作者和 AI 工具重度用户的全功能使用手册</h3>
+<div class="table-wrap"><table>
+<tr><th>版本</th><th>最后校验</th><th>资料性质</th></tr>
+<tr><td>v2.0</td><td>2026-07-06</td><td>非官方指南，不代表 OpenAI 官方文档或产品承诺</td></tr>
+</table></div>
+<blockquote>本文以 2026 年 7 月可访问的 Codex App、Codex CLI、Codex IDE Extension、Codex Web/Cloud 公开能力和实测界面为参考。Codex 更新很快，安装方式、模型名称、额度、入口位置和命令参数都可能变化；涉及具体功能和价格时，请以 OpenAI 官方文档、Codex 当前版本和你账号实际显示为准。</blockquote>
+<hr>
+<div class="no-break allow-break">
+<h1 id="0使用说明">0. 使用说明</h1>
+<h2 id="01重要声明">0.1 重要声明</h2>
+<ul><li>本资料为<strong>非官方指南</strong>，不代表 OpenAI 官方文档。</li></ul>
+<ul><li>所有功能以 OpenAI 官方文档和 Codex 实际版本为准。</li></ul>
+<ul><li>本橙皮书会随着 Codex 更新持续维护。</li></ul>
+<h2 id="02这份橙皮书适合谁">0.2 这份橙皮书适合谁</h2>
+<div class="table-wrap"><table>
+<tr><th>人群</th><th>适合原因</th></tr>
+<tr><td>完全没用过 Codex，想系统上手的人</td><td>第一篇到第三篇覆盖完整入门路径</td></tr>
+<tr><td>会用 AI 工具，想把 Codex 接入真实工作流的人</td><td>第三篇核心功能 + 第四篇标准工作流</td></tr>
+<tr><td>内容创作者</td><td>第五篇场景化指南 + 第六篇案例（PPT / 视频 / 网站）</td></tr>
+<tr><td>开发者 / 技术负责人</td><td>第三篇代码管理 + 案例四代码审查</td></tr>
+<tr><td>数据分析或办公人群</td><td>第六篇案例五（数据分析）</td></tr>
+</table></div>
+<h2 id="03阅读路线">0.3 阅读路线</h2>
+<div class="table-wrap"><table>
+<tr><th>路线</th><th>适合人群</th><th>阅读顺序</th></tr>
+<tr><td><strong>快速上手路线</strong></td><td>第一次用 Codex</td><td>0 → 第一篇 → 第二篇 → 第四篇 → 选读案例</td></tr>
+<tr><td><strong>开发者路线</strong></td><td>程序员 / 技术负责人</td><td>第一篇 → 第二篇 → 第三篇（代码管理）→ 案例四</td></tr>
+<tr><td><strong>内容创作路线</strong></td><td>做 PPT/视频/网站的人</td><td>第一篇 → 第二篇 → 第三篇（插件）→ 案例一/二/三</td></tr>
+<tr><td><strong>进阶扩展路线</strong></td><td>想深度定制 Codex 的人</td><td>第三篇（Skill/MCP）→ 第四篇 → 附录</td></tr>
+</table></div>
+<h2 id="04已知限制与诚实建议">0.4 已知限制与诚实建议</h2>
+<p>这本书不修饰 Codex 的问题。以下是你上手前应该知道的&quot;坑&quot;：</p>
+<p><strong>上下文窗口：标称 1M，实际可用约 258K</strong></p>
+<p>Codex 官方宣称支持 1M token 上下文，但在实际使用中，由于系统提示词、工具定义和上下文管理机制占用，真正可用于你的代码和对话的部分大约在 250K–260K token 左右。大型项目不要指望一次性把整个仓库塞进去，合理使用 <code>.codexignore</code> 排除无关文件。</p>
+<p><strong>Windows Full Access 模式有真实风险</strong></p>
+<p>社区已有多起 Windows 用户开启 Full Access（全自动）模式后，Codex 误删用户文件的报告，最严重的情况是全盘数据被清空（370GB / 700GB / 240GB 多人证实）。<strong>绝对不要在 Windows 上对系统目录或重要数据目录使用 Full Access 模式</strong>。macOS 和 Linux 由于沙盒机制更完善，风险相对较低，但仍建议先 <code>git commit</code> 再跑。</p>
+<p><strong>Codex 不是万能的：和 Claude Code 各有长短</strong></p>
+<p>Codex（GPT-5.5）在 SWE-bench Verified 上达到 82.6%，但 Claude Opus 4.7 在 SWE-Bench Pro 上仍领先（64.3% vs 58.6%）。实际体验：</p>
+<ul><li>Codex 的沙盒隔离做得更好，安全敏感场景首选</li></ul>
+<ul><li>Claude Code 对大型项目的长文理解更强，复杂重构更靠谱</li></ul>
+<ul><li>两个都装，按任务选择，是 2026 年开发者的理性做法</li></ul>
+<p><strong>额度消耗比你想的快</strong></p>
+<p>复杂任务（尤其涉及大量文件读写和多轮对话）的 token 消耗很高。ChatGPT Plus（$20/月）的额度在密集使用时可能半天就耗尽。如果你是重度用户，Pro $100 档位是更现实的选择。省额度技巧：简单任务不要多轮对话，一次说清楚；复杂任务先出计划再执行，减少返工。</p>
+<p><strong>Skill 和 MCP 生态仍在早期</strong></p>
+<p>目前 Skill 和 MCP 连接器的数量在快速增长，但质量参差不齐。部分第三方 Skill 存在文档过期、命令不对、功能不稳定的问题。安装前建议先看 GitHub 最近的 commit 时间和 issue 列表，判断维护状态。</p>
+<p><strong>模型更新可能改变行为</strong></p>
+<p>OpenAI 更新模型（如从 GPT-5.4 到 GPT-5.5）后，Codex 的行为模式可能发生变化：之前能用的 prompt 技巧可能失效，代码风格可能改变，甚至某些功能入口会调整。建议关注 OpenAI 官方 changelog，遇到&quot;突然不好用了&quot;先排查是不是模型更新导致的。</p>
+<p><strong>复杂任务需要多轮迭代</strong></p>
+<p>不要指望一次对话就完美完成复杂任务。Codex 的正确用法是：先出计划 → 确认方向 → 分步执行 → 每步检查 → 逐步迭代。急于求成往往导致返工更多。</p>
+<p><strong>Cloud 任务有时间限制</strong></p>
+<p>Codex Cloud 单个任务有执行时间上限（通常 10–30 分钟，视订阅级别而定）。如果你的任务涉及大量文件生成或复杂构建，可能需要拆分为多个子任务分别提交。</p>
+</div>
+<div class="contact-page"><h2>联系方式</h2><p>本橙皮书由 <strong>武小森</strong> 编写。如需交流 AI 使用心得、获取更新或加入读者社群，欢迎扫码联系：</p><h3>知识星球</h3><p>陆续更新 AI 使用图文/视频教程、动向和技巧，并答疑解惑。</p><img src="contact-xingqiu-large.jpg" alt="知识星球二维码" /><blockquote>知识星球限 100 人，满员后不再接受新成员。</blockquote><h3>其他联系方式</h3><table>  <tr><th>公众号</th><th>视频号</th><th>个人微信</th></tr>  <tr>    <td><img src="contact-official.jpg" alt="公众号" /></td>    <td><img src="contact-video.jpg" alt="视频号" /></td>    <td><img src="contact-wechat.jpg" alt="个人微信" /></td>  </tr>  <tr>    <td>获取最新 AI 工具指南和实战案例</td>    <td>观看 AI 工具视频教程</td>    <td>直接添加作者微信（备注：橙皮书读者）</td>  </tr></table><h3>GitHub 仓库</h3><p style="text-align:center; margin: 12px 0;">  <a href="https://github.com/diyiwuyan/codex-orange-book" style="display:inline-block; padding: 10px 28px; background: #e65100; color: #fff; text-decoration: none; border-radius: 24px; font-weight: 700; font-size: 16px;">github.com/diyiwuyan/codex-orange-book</a></p><h3>推荐阅读：WorkBuddy 橙皮书</h3><p style="text-align:center; margin: 12px 0; padding: 12px 18px; background: #fff3e0; border-radius: 12px; border: 2px dashed #e65100; display: inline-block;">  <strong style="font-size: 16px; color: #e65100;">📕 获取方式</strong><br/>  扫码添加上方个人微信，回复「<strong style="color:#bf360c;">workbuddy</strong>」获取《WorkBuddy 橙皮书》</p></div>
+<hr>
+<h1 id="第一篇先搞懂Codex是什么">第一篇：先搞懂 Codex 是什么</h1>
+<h2 id="Codex基础认知">Codex 基础认知</h2>
+<h3 id="Codex到底是什么">Codex 到底是什么</h3>
+<p>Codex 是 OpenAI 推出的 <strong>AI 编程智能体（Coding Agent）</strong>。</p>
+<p>很多人第一次听到 Codex，会下意识把它理解成&quot;又一个 AI 写代码工具&quot;。</p>
+<p>但如果只把 Codex 当成&quot;帮我写代码的 ChatGPT&quot;，你很容易低估它。</p>
+<p>Codex 真正重要的地方，不是它能不能写一个函数、补一段代码、解释一个报错，而是它代表了 AI 编程工具的一次角色变化：</p>
+<blockquote>以前，AI 是坐在你旁边帮你补代码的人。</blockquote>
+<blockquote>后来，AI 是在编辑器里和你一起改代码的人。</blockquote>
+<blockquote>现在，Codex 更像是一个可以被交代任务的工程执行者。</blockquote>
+<p>它不只是回答你&quot;这段代码怎么写&quot;，而是可以进入一个项目，读取文件，理解上下文，制定计划，修改代码，运行命令，检查结果，最后把改动整理成可以 review 的结果。</p>
+<p>这就是 Codex 和普通 AI 聊天工具最大的区别。</p>
+<hr>
+<h3 id="AI编程工具的四次进化">AI 编程工具的四次进化</h3>
+<p>过去几年，AI 编程工具大致经历了四个阶段：</p>
+<p><strong>2021 年：Copilot 补全时代。</strong> Codex 这个名字第一次被大量开发者听到，是因为 GitHub Copilot。那时 AI 主要负责代码补全：你写开头，它补后面；你写函数名，它补函数体。它像一个更聪明的输入法，能让你写得更快，但项目怎么拆、文件怎么找、测试怎么跑，仍然主要靠人完成。</p>
+<p><strong>2022 年：ChatGPT 对话时代。</strong> ChatGPT 出现后，AI 编程从&quot;补全&quot;进入&quot;对话&quot;。你可以直接问它报错原因、代码优化、接口写法、项目结构解释。AI 从输入法变成了问答伙伴。但它通常不在真实项目里，你需要复制代码、粘贴报错、手动补上下文，再把答案搬回项目。</p>
+<p><strong>2023—2024 年：Cursor 项目协作时代。</strong> Cursor 这类 AI 编辑器让 AI 真正进入编辑器，能看到文件、修改函数、跨文件重构、根据项目上下文完成一部分开发任务。AI 开始从&quot;回答问题&quot;变成&quot;协助修改项目&quot;。但它大多数时候仍依附在 IDE 里，你还需要盯着它改、判断下一步、跑测试、整理提交。</p>
+<p><strong>2025 年：Codex 工程 Agent 时代。</strong> Codex 重新出现后，已经不只是当年负责代码补全的模型，而是面向真实软件工程任务的 coding agent。它能读项目、解释代码、修 bug、加功能、补测试、重构模块、运行命令、检查 diff、整理 PR 说明，甚至并行处理多个工程任务。</p>
+<p>这意味着，AI 编程工具的重点正在从&quot;帮你写代码&quot;转向&quot;帮你交付任务&quot;。</p>
+<p>一句话总结：</p>
+<blockquote>Copilot 帮你补代码，ChatGPT 帮你想代码，Cursor 陪你改项目，而 Codex 开始帮你执行工程任务。</blockquote>
+<hr>
+<h3 id="Codex能做什么">Codex 能做什么</h3>
+<p>很多人第一次用 Codex，会直接问：</p>
+<blockquote>&quot;帮我写一个登录页面。&quot;</blockquote>
+<blockquote>&quot;帮我修一下这个 bug。&quot;</blockquote>
+<blockquote>&quot;帮我做一个项目。&quot;</blockquote>
+<p>这些当然可以，但还不够准确。</p>
+<p>Codex 真正擅长的，不是凭空生成一段代码，而是在真实项目里完成一组工程任务。它可以读项目、找文件、理解上下文、制定计划、修改代码、运行命令、检查结果、整理 diff，最后把任务推进到可以 review 的状态。</p>
+<p>所以，不要把 Codex 当成一个&quot;代码生成按钮&quot;。更准确地说：</p>
+<blockquote>Codex 是一个可以进入项目现场的 AI 工程助手。</blockquote>
+<p>它能做的事，大致可以分成以下几类：</p>
+<h4 id="1读懂一个陌生项目">1. 读懂一个陌生项目</h4>
+<p>使用 Codex 的第一步，不应该是让它直接写代码，而是让它先读项目。</p>
+<p>它可以帮你快速搞清楚：</p>
+<ul><li>项目用什么技术栈</li></ul>
+<ul><li>入口文件在哪里</li></ul>
+<ul><li>核心模块在哪里</li></ul>
+<ul><li>测试和构建命令是什么</li></ul>
+<ul><li>哪些文件不能随便动</li></ul>
+<blockquote>💡 很多 Codex 任务失败，不是因为它不会写代码，而是因为它还没理解项目，就被要求直接动手。</blockquote>
+<h4 id="2解释代码和梳理逻辑">2. 解释代码和梳理逻辑</h4>
+<p>Codex 可以帮你解释看不懂的代码。比如：</p>
+<ul><li>这个函数是做什么的</li></ul>
+<ul><li>这个组件为什么这样写</li></ul>
+<ul><li>接口调用链路是什么</li></ul>
+<ul><li>状态从哪里来</li></ul>
+<ul><li>这个 bug 可能和哪些文件有关</li></ul>
+<p>它不只是解释单个函数，还可以结合上下文，梳理模块关系、数据流和潜在风险。这对接手旧项目尤其有用。</p>
+<h4 id="3修bug和加功能">3. 修 bug 和加功能</h4>
+<p>Codex 很适合处理边界清楚的开发任务。比如：</p>
+<ul><li>修复一个可复现 bug</li></ul>
+<ul><li>新增一个设置页</li></ul>
+<ul><li>新增一个表单校验</li></ul>
+<ul><li>新增一个接口</li></ul>
+<ul><li>优化一个前端页面</li></ul>
+<blockquote>⚠️ 但不要直接把一个大项目丢给它。更好的方式是把任务拆小：先读项目 → 再出方案 → 只改一个模块 → 跑测试 → 看 diff → 确认没问题后再继续。</blockquote>
+<h4 id="4写测试做重构">4. 写测试、做重构</h4>
+<p>Codex 可以帮你补测试，也可以帮你重构代码：</p>
+<ul><li>补单元测试、边界条件、异常场景</li></ul>
+<ul><li>提取重复逻辑、拆分过长函数、整理组件结构</li></ul>
+<blockquote>⚠️ 这类任务必须加边界：不改业务逻辑、不改公共 API、不引入无关依赖、修改后必须跑测试。</blockquote>
+<h4 id="5写文档和整理PR">5. 写文档和整理 PR</h4>
+<p>Codex 很适合写工程文档：README、安装说明、启动说明、接口文档、PR 描述、commit message、更新日志。</p>
+<blockquote>💡 文档不是附属品。在 Codex 工作流里，文档本身就是上下文基础设施。文档越清楚，后续人和 AI 接手项目都会更轻松。</blockquote>
+<h4 id="6跑命令看diff做review">6. 跑命令、看 diff、做 review</h4>
+<p>Codex 和普通聊天工具最大的区别之一，是它可以在项目环境里运行命令：运行测试、lint、typecheck、build、查看 git status、查看 git diff、搜索代码、检查修改结果。</p>
+<p>这让 Codex 不只是&quot;猜答案&quot;，而是可以验证结果。但命令执行也有风险：能验证的可以让它验证；有风险的必须由你批准；涉及生产环境、数据库、真实用户数据的操作，不要交给它自动执行。</p>
+<hr>
+<h3 id="核心能力一览">核心能力一览</h3>
+<div class="table-wrap"><table>
+<tr><th>能力</th><th>说明</th></tr>
+<tr><td><strong>对话式开发</strong></td><td>用自然语言描述需求，Codex 理解并执行</td></tr>
+<tr><td><strong>项目级理解</strong></td><td>读取整个项目目录，理解文件结构和依赖关系</td></tr>
+<tr><td><strong>自主规划与执行</strong></td><td>自动拆解任务、规划步骤、多步交付</td></tr>
+<tr><td><strong>本地文件操作</strong></td><td>读取、修改项目目录里的代码和文件</td></tr>
+<tr><td><strong>代码运行与测试</strong></td><td>在项目目录里运行命令、执行测试</td></tr>
+<tr><td><strong>插件系统</strong></td><td>安装插件，连接外部工具（浏览器、邮件、云盘等）</td></tr>
+<tr><td><strong>Skill 系统</strong></td><td>安装专项技能，按固定流程执行</td></tr>
+<tr><td><strong>MCP 连接器</strong></td><td>连接数据库、文档、API 等外部服务</td></tr>
+<tr><td><strong>Git 工作流</strong></td><td>代码管理、diff 查看、提交、推送</td></tr>
+<tr><td><strong>云端运行</strong></td><td>远程处理 GitHub 项目，适合长时间任务</td></tr>
+<tr><td><strong>自动化</strong></td><td>定期复盘、检查、处理问题</td></tr>
+<tr><td><strong>记忆系统</strong></td><td>从会话中沉淀偏好和规则</td></tr>
+</table></div>
+<hr>
+<h3 id="Codex四大形态">Codex 四大形态</h3>
+<div class="table-wrap"><table>
+<tr><th>形态</th><th>适合谁</th><th>平台</th><th>功能完整度</th></tr>
+<tr><td><strong>Codex App</strong></td><td>新手（最推荐）</td><td>macOS / Windows</td><td>★★★★★（功能最强）</td></tr>
+<tr><td><strong>Codex CLI</strong></td><td>稍懂终端的人</td><td>macOS / Windows / Linux</td><td>★★★★☆</td></tr>
+<tr><td><strong>Codex IDE Extension</strong></td><td>用 VS Code / Cursor 的人</td><td>编辑器插件</td><td>★★★☆☆</td></tr>
+<tr><td><strong>Codex Web / Cloud</strong></td><td>想让 Codex 远程处理 GitHub 项目</td><td>网页</td><td>★★★☆☆</td></tr>
+</table></div>
+<blockquote>💡 <strong>新手建议</strong>：直接用 Codex App，图形界面、功能最全、上手最快。如果你主要做本地项目、网页练习和日常开发，优先从 Codex App 开始通常就够用；等你熟悉 Git、终端和团队协作后，再逐步补 CLI、IDE Extension 和 Web/Cloud。</blockquote>
+<hr>
+<h2 id="Codex与同类工具的区别">Codex 与同类工具的区别</h2>
+<h3 id="vsChatGPT">vs ChatGPT</h3>
+<p>很多人会问：既然 ChatGPT 也能写代码，为什么还要用 Codex？</p>
+<p>核心区别在于：</p>
+<blockquote>ChatGPT 更像一个顾问，有问题问 GPT，从它那里得到答案，然后自己去执行。现在 Codex 更像是一个实习生，我们能够真正地让它帮我们干活，交代任务能够完成这种。</blockquote>
+<p>ChatGPT 适合帮你想问题。Codex 适合帮你推进任务。</p>
+<p>更合理的用法是：<strong>先用 ChatGPT 想清楚，再用 Codex 进项目执行。</strong></p>
+<h3 id="vsCursor">vs Cursor</h3>
+<p>很多人会把 Codex 和 Cursor 放在一起比较，因为它们都能帮你写代码、改代码、理解项目。但它们的定位并不一样。</p>
+<blockquote>Cursor 更像一个 AI 编辑器，Codex 更像一个工程 Agent。</blockquote>
+<p>合理的用法是组合使用：用 Cursor 做日常编码和局部修改，用 Codex 做任务推进和工程交付。Cursor 负责陪你写，Codex 负责帮你跑完整任务。一个偏 IDE 协作，一个偏 Agent 执行。</p>
+<h3 id="vsClaudeCode">vs Claude Code</h3>
+<p>Codex 和 Claude Code 很像。都是 agentic coding 工具，但两者的侧重点不一样。</p>
+<p><strong>Claude Code 更偏终端里的长期协作</strong>：你打开终端，把它放进项目里，然后和它围绕一个开发任务持续协作。它适合长时间读项目、持续追踪一个复杂任务、在终端里边讨论边修改。</p>
+<p><strong>Codex 更偏 OpenAI 生态里的多端任务执行</strong>：优势不只在 CLI，而在 OpenAI 生态里的多端联动——App、CLI、IDE、Web 之间流转，让你用不同方式管理、执行和审查工程任务。</p>
+<blockquote>一句话总结：Claude Code 更像终端里的长期工程搭档，Codex 更像 OpenAI 生态里的多端工程 Agent。</blockquote>
+<hr>
+<h2 id="什么时候适合用Codex">什么时候适合用 Codex</h2>
+<p>适合 Codex 的任务，一般有几个特点：</p>
+<ul><li>目标明确</li></ul>
+<ul><li>范围可控</li></ul>
+<ul><li>上下文清楚</li></ul>
+<ul><li>结果能验证</li></ul>
+<ul><li>失败能回滚</li></ul>
+<ul><li>风险可接受</li></ul>
+<p><strong>典型场景</strong>：读项目、修 bug、加小功能、补测试、写文档、优化前端页面、整理 PR、审查 diff、处理重复任务。</p>
+<hr>
+<h2 id="什么时候不适合直接用Codex">什么时候不适合直接用 Codex</h2>
+<p>不建议直接让 Codex 处理：</p>
+<ul><li>生产数据库</li></ul>
+<ul><li>真实用户数据</li></ul>
+<ul><li>支付核心逻辑</li></ul>
+<ul><li>权限和安全核心模块</li></ul>
+<ul><li>大规模架构迁移</li></ul>
+<ul><li>没有备份的重要项目</li></ul>
+<ul><li>没有测试的核心业务</li></ul>
+<ul><li>你自己也无法验收的任务</li></ul>
+<blockquote><strong>核心原则</strong>：如果你判断不了结果对不对，就不要让 Codex 独立完成。Codex 可以提高效率，但不能替你做判断。</blockquote>
+<hr>
+<h2 id="一句话总结Codex">一句话总结 Codex</h2>
+<blockquote>- <strong>初级用法</strong>：让它帮你写代码。</blockquote>
+<blockquote>- <strong>中级用法</strong>：让它帮你读项目、改功能、跑测试。</blockquote>
+<blockquote>- <strong>高级用法</strong>：让它成为你的项目执行代理，配合规则、上下文、自动化和团队流程工作。</blockquote>
+<hr>
+<h1 id="第二篇安装配置与界面认识">第二篇：安装、配置与界面认识</h1>
+<h2 id="安装前准备">安装前准备</h2>
+<h3 id="账号准备">账号准备</h3>
+<div class="table-wrap"><table>
+<tr><th>项目</th><th>说明</th></tr>
+<tr><td>ChatGPT 账号</td><td>登录 Codex 用</td></tr>
+<tr><td>网络</td><td>能正常访问 ChatGPT / OpenAI 服务</td></tr>
+<tr><td>套餐</td><td>选择当前包含 Codex 的 ChatGPT 套餐（套餐名称、额度和功能范围会变化，请以官方页面为准）</td></tr>
+<tr><td>GitHub 账号</td><td>如果要用 Codex Cloud 或推送代码，需要准备</td></tr>
+</table></div>
+<h3 id="系统准备">系统准备</h3>
+<div class="table-wrap"><table>
+<tr><th>形态</th><th>支持平台</th><th>备注</th></tr>
+<tr><td>Codex App</td><td>macOS / Windows</td><td>新手最推荐，功能最强</td></tr>
+<tr><td>Codex CLI</td><td>macOS / Windows / Linux</td><td>适合稍懂终端的人</td></tr>
+<tr><td>Codex IDE Extension</td><td>VS Code / Cursor / Windsurf</td><td>适合编辑器用户</td></tr>
+<tr><td>Codex Web / Cloud</td><td>网页</td><td>适合远程处理 GitHub 项目</td></tr>
+</table></div>
+<h3 id="软件工具准备">软件工具准备</h3>
+<div class="table-wrap"><table>
+<tr><th>工具</th><th>作用</th><th>下载 / 注册链接</th></tr>
+<tr><td>Git</td><td>让 Codex 看代码变更、生成 diff、回滚修改</td><td>Git 官方下载</td></tr>
+<tr><td>VS Code / Cursor</td><td>方便查看和编辑代码</td><td>VS Code 下载 / Cursor 下载</td></tr>
+<tr><td>终端</td><td>Windows 用 PowerShell；Mac 用 Terminal</td><td>不用下载，系统自带</td></tr>
+<tr><td>浏览器</td><td>登录 ChatGPT / OpenAI / GitHub</td><td>Chrome 下载</td></tr>
+<tr><td>Node.js</td><td>做网页、前端、Next.js、Vite 项目常用</td><td>Node.js 下载</td></tr>
+<tr><td>Python</td><td>做脚本、自动化、数据处理常用</td><td>Python 下载</td></tr>
+<tr><td>GitHub 账号</td><td>如果要用 Codex Cloud 或推送代码，需要准备</td><td>GitHub 注册</td></tr>
+</table></div>
+<hr>
+<h2 id="CodexApp安装与上手">Codex App 安装与上手</h2>
+<blockquote>Codex App 是桌面版，图形界面，功能最全。<strong>新手首选这一种。</strong></blockquote>
+<h3 id="下载与安装">下载与安装</h3>
+<p>1. 访问 Codex App 官方页面下载安装包 2. macOS：将 Codex 拖入「应用程序」文件夹 3. Windows：运行安装程序，建议用默认路径，避免中文路径 4. 首次启动后，用 ChatGPT 账号登录</p>
+<h3 id="首次启动">首次启动</h3>
+<p>1. 登录完成后，系统会让你选择一个<strong>项目目录</strong> 2. 项目目录 = Codex 的工作范围，它只能读写这个目录里的文件 3. <strong>新手建议</strong>：第一次选一个干净的练习目录，不要选系统盘，也不要一上来就选重要工作项目</p>
+<p>推荐目录结构：</p>
+<pre><code>D:\AI-Codex-Projects\     ← Windows
+~/AI-Codex-Projects/      ← macOS</code></pre>
+<blockquote>⚠️ Windows 用户第一次使用时，建议不要在系统目录里运行 Codex。</blockquote>
+<h3 id="界面布局">界面布局</h3>
+<p>Codex App 的界面分为几个核心区域：</p>
+<div class="table-wrap"><table>
+<tr><th>区域</th><th>功能</th></tr>
+<tr><td><strong>左侧栏</strong></td><td>项目目录、会话列表、插件管理</td></tr>
+<tr><td><strong>主对话区</strong></td><td>任务标题、消息列表、输入区</td></tr>
+<tr><td><strong>右侧面板</strong></td><td>代码变更预览（diff）、文件列表</td></tr>
+</table></div>
+<h3 id="输入方式">输入方式</h3>
+<p>Codex 的工作方式是对话 + 操作结合：</p>
+<ul><li>你在输入区用自然语言描述需求</li></ul>
+<ul><li>Codex 生成执行计划，你确认后它开始执行</li></ul>
+<ul><li>执行过程中，Codex 会显示它在读什么文件、改了什么文件</li></ul>
+<ul><li>你随时可以中断、提问、调整方向</li></ul>
+<blockquote>💡 <strong>关键理解</strong>：Codex 不是聊天机器人，而是一个能对话的工程执行者。你和它的对话是任务推进过程，不是闲聊。</blockquote>
+<hr>
+<h2 id="CodexCLI安装与上手">Codex CLI 安装与上手</h2>
+<h3 id="安装">安装</h3>
+<pre><code class="language-bash">npm i -g @openai/codex</code></pre>
+<h3 id="使用">使用</h3>
+<p>进入项目目录后启动：</p>
+<pre><code class="language-bash">cd 项目目录
+codex</code></pre>
+<h3 id="常用命令">常用命令</h3>
+<div class="table-wrap"><table>
+<tr><th>命令</th><th>作用</th></tr>
+<tr><td><code>codex</code></td><td>启动 Codex CLI</td></tr>
+<tr><td><code>/plugins</code></td><td>打开插件列表</td></tr>
+<tr><td><code>/skills</code></td><td>打开 Skill 列表</td></tr>
+<tr><td><code>/mcp</code></td><td>查看当前可用的 MCP 工具</td></tr>
+<tr><td><code>/plan</code></td><td>先让 Codex 输出计划，再决定是否执行</td></tr>
+</table></div>
+<hr>
+<h2 id="CodexIDEExtensionWeb简版">Codex IDE Extension / Web（简版）</h2>
+<div class="table-wrap"><table>
+<tr><th>方式</th><th>适合谁</th><th>官方文档</th></tr>
+<tr><td><strong>IDE Extension</strong></td><td>用 VS Code / Cursor 的人</td><td>在 VS Code 插件市场搜索安装</td></tr>
+<tr><td><strong>Web / Cloud</strong></td><td>想让 Codex 远程处理 GitHub 项目</td><td>连接 GitHub 仓库即可</td></tr>
+</table></div>
+<blockquote>这两种方式功能不如 App 完整，新手建议先用 App。</blockquote>
+<hr>
+<h2 id="项目目录管理">项目目录管理</h2>
+<h3 id="项目目录Codex的工作范围">项目目录 = Codex 的工作范围</h3>
+<p>Codex 不是单纯聊天工具，它需要进入一个具体项目目录工作。官方入门流程也是：登录 Codex 后，选择电脑上的文件夹或 Git 仓库，再开始第一个任务。</p>
+<p>建议你提前建一个专门练习目录，比如：</p>
+<pre><code>D:\AI-Codex-Projects</code></pre>
+<h3 id="访问项目外目录">访问项目外目录</h3>
+<p>Codex 可以读取、修改文件，还能在你的项目目录里运行命令。官方对 CLI 的描述就是：它可以在你选择的目录中读取、修改代码，并运行命令。</p>
+<blockquote>⚠️ 第一次打开 Codex App 后，登录完成，系统会让你选择一个项目目录。新手建议第一次选择一个干净的练习目录，不要直接 C 盘，也不要一上来就选择重要工作项目。</blockquote>
+<hr>
+<h1 id="第三篇核心功能详解">第三篇：核心功能详解</h1>
+<h2 id="31对话与任务执行">3.1 对话与任务执行</h2>
+<p>Codex 的基础交互方式是对话。你用自然语言描述需求，Codex 理解后执行。</p>
+<h3 id="好的需求描述四要素">好的需求描述四要素</h3>
+<p>1. <strong>背景</strong>：项目处于什么阶段、为什么要做 2. <strong>目标</strong>：要解决什么具体问题 3. <strong>范围</strong>：涉及哪些文件、改哪里 4. <strong>验收标准</strong>：怎样算完成</p>
+<h3 id="模糊vs具体">模糊 vs 具体</h3>
+<div class="table-wrap"><table>
+<tr><th>模糊说法 ❌</th><th>更清楚的说法 ✅</th></tr>
+<tr><td>优化首页</td><td>优化首页首屏标题、副标题和 CTA 按钮</td></tr>
+<tr><td>页面不好看</td><td>调整卡片间距、字体层级和按钮样式</td></tr>
+<tr><td>登录有问题</td><td>修复点击登录按钮后没有跳转的问题</td></tr>
+<tr><td>做一个后台</td><td>新增用户列表页，包含搜索、筛选和分页</td></tr>
+</table></div>
+<hr>
+<h2 id="32计划模式">3.2 计划模式</h2>
+<p>Codex 在动手前会先制定执行计划。这是它区别于普通 AI 聊天工具的关键。</p>
+<h3 id="典型流程">典型流程</h3>
+<pre><code>1. 你描述需求
+2. Codex 列出执行计划（要改哪些文件、每步做什么）
+3. 你确认计划
+4. Codex 开始执行
+5. 执行过程中展示进度和变更
+6. 你审查结果</code></pre>
+<h3 id="如何让Codex先出计划">如何让 Codex 先出计划</h3>
+<pre><code>先不要写代码，也不要修改任何文件。
+请先根据当前需求和项目结构，制定一个修改计划。
+等我确认后，再开始执行。</code></pre>
+<p>也可以直接输入 <code>/plan</code>，先让 Codex 输出计划，再决定是否执行。</p>
+<blockquote>💡 <strong>使用建议</strong>：任何复杂任务都先用计划模式。先确认方向正确，再让 Codex 动手，能避免大量返工。</blockquote>
+<hr>
+<h2 id="33插件系统">3.3 插件系统</h2>
+<h3 id="插件是什么">插件是什么</h3>
+<p>插件是给 Codex 额外安装的&quot;能力包&quot;，让它连接更多工具、使用固定流程、获得专项能力。</p>
+<h3 id="常见插件和能力方向">常见插件和能力方向</h3>
+<p>插件目录会随着 Codex 版本、工作区和账号权限变化。下面不是固定排名，而是常见能力方向，实际可安装内容以你当前 Codex 插件页显示为准。</p>
+<div class="table-wrap"><table>
+<tr><th>类型</th><th>包含插件</th><th>适合做什么</th></tr>
+<tr><td>浏览器与电脑操作</td><td>Chrome、Computer Use</td><td>网页测试、自动点击、软件操作</td></tr>
+<tr><td>代码与项目协作</td><td>GitHub</td><td>管理仓库、修 bug、创建 PR</td></tr>
+<tr><td>前端与设计</td><td>Build Web Apps、Figma</td><td>生成网页、设计稿转代码</td></tr>
+<tr><td>办公交付</td><td>Documents、Presentations、Spreadsheets</td><td>文档、PPT、表格分析</td></tr>
+<tr><td>视频生成</td><td>HyperFrames、Remotion</td><td>用代码或 HTML 生成视频</td></tr>
+</table></div>
+<h3 id="10个常见插件详解">10 个常见插件详解</h3>
+<div class="table-wrap"><table>
+<tr><th>序号</th><th>插件</th><th>主要作用</th><th>简单来说</th></tr>
+<tr><td>1</td><td>Chrome</td><td>让 Codex 直接操作浏览器</td><td>可以打开网页、点击按钮、检查页面效果、测试网页功能</td></tr>
+<tr><td>2</td><td>GitHub</td><td>代码仓库管理与协作</td><td>让 Codex 读取仓库、处理 issue、改代码、创建 PR</td></tr>
+<tr><td>3</td><td>Computer Use</td><td>让 Codex 操作电脑</td><td>像人一样看屏幕、点按钮、操作软件，权限比较高</td></tr>
+<tr><td>4</td><td>Build Web Apps</td><td>一句话生成前端网页应用</td><td>输入需求，生成网页、小工具、落地页、Demo</td></tr>
+<tr><td>5</td><td>Figma</td><td>设计稿转代码与原型设计</td><td>把 Figma 设计稿变成前端页面，适合 UI 开发</td></tr>
+<tr><td>6</td><td>Documents</td><td>AI 帮你交付正式文档</td><td>生成 README、项目说明、教程文档、产品文档</td></tr>
+<tr><td>7</td><td>Presentations</td><td>AI 生成高质量 PPT</td><td>根据内容生成汇报、课程、产品介绍、方案型 PPT</td></tr>
+<tr><td>8</td><td>Spreadsheets</td><td>AI 数据分析与表格处理</td><td>帮你整理 Excel、分析数据、生成表格结论</td></tr>
+<tr><td>9</td><td>HyperFrames</td><td>HTML 直接生成视频</td><td>用网页/HTML 结构生成视频内容</td></tr>
+<tr><td>10</td><td>Remotion</td><td>用代码生成高质量视频</td><td>用 React/代码方式生成更专业的视频</td></tr>
+</table></div>
+<h3 id="怎么安装插件">怎么安装插件</h3>
+<p><strong>在 Codex App 里</strong>： 1. 打开 Codex App 2. 进入插件管理页面 3. 搜索或浏览插件 4. 点击「Add to Codex」或添加按钮 5. 安装完成后，新开一个对话使用</p>
+<p><strong>在 Codex CLI 里</strong>：</p>
+<pre><code class="language-bash">/plugins</code></pre>
+<p>打开插件列表后，可以搜索插件、查看详情、Install plugin、Uninstall plugin、Space 对已安装插件启用或停用。</p>
+<hr>
+<h2 id="34Skill系统">3.4 Skill 系统</h2>
+<h3 id="Skill是什么">Skill 是什么</h3>
+<p>Skill 是给 Codex 准备的一套「固定工作方法」。</p>
+<p>Codex 本身会读代码、改代码、运行命令。但如果你经常让它做同一类任务，比如写 README、做代码 Review、生成网页、整理文档，就可以把这套流程做成 Skill。</p>
+<h3 id="Skill和普通提示词有什么区别">Skill 和普通提示词有什么区别</h3>
+<div class="table-wrap"><table>
+<tr><th>对比维度</th><th>普通提示词</th><th>Skill</th></tr>
+<tr><td>使用方式</td><td>每次手动输入</td><td>保存成固定能力</td></tr>
+<tr><td>稳定性</td><td>容易漏要求</td><td>更稳定</td></tr>
+<tr><td>适合场景</td><td>临时任务</td><td>重复任务</td></tr>
+<tr><td>复用性</td><td>低</td><td>高</td></tr>
+<tr><td>内容结构</td><td>一段提示词</td><td>指令、模板、资料、脚本</td></tr>
+</table></div>
+<blockquote>一句话：只做一次的任务 = 直接写提示词；经常重复做的任务 = 适合做 Skill。</blockquote>
+<h3 id="Skill还是MCP什么时候用哪个">Skill 还是 MCP？什么时候用哪个</h3>
+<p>记住一句话：「怎么做」的问题用 Skill，「连接什么工具」的问题用 MCP。</p>
+<div class="table-wrap"><table>
+<tr><th>你的需求</th><th>用 Skill 还是 MCP</th></tr>
+<tr><td>写 README、固定文档输出格式</td><td>Skill</td></tr>
+<tr><td>做代码 Review、UI Review</td><td>Skill</td></tr>
+<tr><td>生成落地页、把修 bug 流程标准化</td><td>Skill</td></tr>
+<tr><td>查最新开发文档、新版本 API</td><td>MCP</td></tr>
+<tr><td>连接数据库</td><td>MCP</td></tr>
+<tr><td>读取 Figma 设计稿</td><td>MCP</td></tr>
+<tr><td>读取 GitHub issue / PR</td><td>MCP</td></tr>
+<tr><td>连接 Notion、内部知识库</td><td>MCP</td></tr>
+</table></div>
+<h3 id="Skill通常包含什么">Skill 通常包含什么</h3>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>作用</th></tr>
+<tr><td>instructions</td><td>告诉 Codex 怎么做</td></tr>
+<tr><td>resources</td><td>放参考资料、模板、标准</td></tr>
+<tr><td>scripts</td><td>可选脚本，用来自动处理任务</td></tr>
+<tr><td>examples</td><td>示例输入和示例输出</td></tr>
+<tr><td>checklist</td><td>检查清单，防止漏步骤</td></tr>
+</table></div>
+<h3 id="怎么添加Skill">怎么添加 Skill</h3>
+<p><strong>方式一：使用已有 Skill</strong></p>
+<p>在 Codex 对话中输入：</p>
+<pre><code>/skills</code></pre>
+<p>或直接输入 <code>$</code>，Codex 会显示当前可用的 Skill。</p>
+<p><strong>方式二：用 $skill-creator 创建 Skill</strong></p>
+<pre><code>$skill-creator
+
+请帮我创建一个 README Skill。
+
+这个 Skill 的作用：
+根据当前项目自动生成适合小白阅读的 README。
+
+触发场景：
+当我说&quot;生成 README&quot;&quot;写项目说明&quot;&quot;整理项目文档&quot;时使用。
+
+工作流程：
+1. 先阅读项目结构
+2. 查看 package.json、README、入口文件
+3. 判断项目类型
+4. 生成项目简介
+5. 写安装步骤
+6. 写启动命令
+7. 说明主要文件夹作用
+8. 补充常见问题
+9. 不确定的地方不要编造</code></pre>
+<p><strong>方式三：手动创建 SKILL.md 文件</strong></p>
+<p>Skill 本质上是一个文件夹，里面必须有一个 <code>SKILL.md</code>：</p>
+<pre><code>.agents
+└── skills
+    └── readme-skill
+        ├── SKILL.md
+        ├── scripts/        (可选)
+        ├── references/     (可选)
+        └── assets/         (可选)</code></pre>
+<p>最简单的 SKILL.md 示例：</p>
+<pre><code class="language-markdown">---
+name: readme-skill
+description: 当用户需要生成 README、项目说明、安装教程、启动步骤时使用。
+---
+
+你是一个 README 文档生成助手。
+
+任务：
+根据当前项目生成一份适合新手阅读的 README。
+
+工作流程：
+1. 阅读项目结构
+2. 查看 package.json、README、入口文件
+3. 判断项目类型
+4. 生成项目介绍
+5. 写安装步骤
+6. 写启动命令
+7. 说明文件结构
+8. 补充常见问题
+
+输出格式：使用 Markdown。
+
+注意事项：不要编造不存在的功能。</code></pre>
+<h3 id="Skill放在哪里">Skill 放在哪里</h3>
+<div class="table-wrap"><table>
+<tr><th>放置位置</th><th>适合场景</th><th>简单来说</th></tr>
+<tr><td>项目里的 <code>.agents/skills</code></td><td>只给当前项目用</td><td>项目专属 Skill</td></tr>
+<tr><td>用户级 Skill 目录</td><td>自己多个项目都想用</td><td>个人通用 Skill</td></tr>
+<tr><td>团队 / 管理员配置</td><td>团队成员统一使用</td><td>团队共享 Skill</td></tr>
+<tr><td>插件里</td><td>想打包分发给别人安装</td><td>正式能力包</td></tr>
+</table></div>
+<hr>
+<h2 id="35MCP连接器">3.5 MCP 连接器</h2>
+<blockquote>只有进阶 AI 编程才需要了解，普通人可以直接跳过这一节。</blockquote>
+<h3 id="MCP是什么">MCP 是什么</h3>
+<p>MCP（Model Context Protocol）是连接外部工具的接口，让 Codex 能操作数据库、文档、API 等外部服务。</p>
+<p><strong>生活化理解</strong>：</p>
+<ul><li>Codex = 一个会干活的人</li></ul>
+<ul><li>MCP = 给他接上不同工具的插座</li></ul>
+<ul><li>MCP Server = 插在插座上的工具箱</li></ul>
+<ul><li>Tool = 工具箱里的具体工具</li></ul>
+<h3 id="MCP适合做什么">MCP 适合做什么</h3>
+<div class="table-wrap"><table>
+<tr><th>场景</th><th>MCP 可以怎么用</th></tr>
+<tr><td>查开发文档</td><td>连接文档 MCP，让 Codex 查新版本 API</td></tr>
+<tr><td>连接数据库</td><td>让 Codex 查询数据库结构或测试数据</td></tr>
+<tr><td>连接设计工具</td><td>让 Codex 读取设计稿、组件信息</td></tr>
+<tr><td>连接项目管理工具</td><td>读取 issue、任务、需求说明</td></tr>
+<tr><td>连接内部系统</td><td>调用公司内部工具或数据源</td></tr>
+<tr><td>连接知识库</td><td>让 Codex 根据团队文档工作</td></tr>
+</table></div>
+<blockquote>小白可以这样判断：普通写代码，不一定需要 MCP；需要 Codex 访问外部工具或外部数据时，才考虑 MCP。</blockquote>
+<h3 id="常见MCPServer">常见 MCP Server</h3>
+<div class="table-wrap"><table>
+<tr><th>MCP Server 类型</th><th>能提供什么</th></tr>
+<tr><td>文档 MCP</td><td>查询开发文档、API 文档</td></tr>
+<tr><td>数据库 MCP</td><td>查询表结构、读取测试数据</td></tr>
+<tr><td>GitHub MCP</td><td>读取 issue、PR、仓库信息</td></tr>
+<tr><td>Figma MCP</td><td>读取设计稿信息</td></tr>
+<tr><td>Notion MCP</td><td>读取知识库页面</td></tr>
+<tr><td>浏览器 MCP</td><td>访问网页、获取页面信息</td></tr>
+</table></div>
+<h3 id="在CodexApp里怎么使用MCP">在 Codex App 里怎么使用 MCP</h3>
+<div class="table-wrap"><table>
+<tr><th>步骤</th><th>操作</th><th>简单来说</th></tr>
+<tr><td>1</td><td>打开 Codex App</td><td>进入桌面版 Codex</td></tr>
+<tr><td>2</td><td>进入 Settings</td><td>打开设置</td></tr>
+<tr><td>3</td><td>找到 MCP servers</td><td>进入 MCP 工具管理区</td></tr>
+<tr><td>4</td><td>查看 recommended servers</td><td>查看官方或系统推荐的 MCP</td></tr>
+<tr><td>5</td><td>添加 custom server</td><td>添加自己的 MCP server</td></tr>
+<tr><td>6</td><td>按提示完成授权</td><td>有些 MCP 需要登录外部账号</td></tr>
+<tr><td>7</td><td>回到项目 thread</td><td>在任务里调用 MCP</td></tr>
+<tr><td>8</td><td>查看结果和权限请求</td><td>确认 Codex 调用了什么工具</td></tr>
+</table></div>
+<h3 id="在CodexCLI里怎么使用MCP">在 Codex CLI 里怎么使用 MCP</h3>
+<p>常用 MCP 终端命令：</p>
+<div class="table-wrap"><table>
+<tr><th>命令</th><th>作用</th></tr>
+<tr><td><code>codex mcp --help</code></td><td>查看 MCP 命令帮助</td></tr>
+<tr><td><code>codex mcp list</code></td><td>查看已配置 MCP server</td></tr>
+<tr><td><code>codex mcp add</code></td><td>添加 MCP server</td></tr>
+<tr><td><code>codex mcp remove</code></td><td>删除 MCP server</td></tr>
+<tr><td><code>codex mcp get</code></td><td>查看某个 MCP server 详情</td></tr>
+<tr><td><code>codex mcp login</code></td><td>登录需要授权的 MCP</td></tr>
+<tr><td><code>/mcp</code></td><td>在 Codex 会话里查看 MCP</td></tr>
+</table></div>
+<p><strong>添加 MCP 的基本格式</strong>：</p>
+<pre><code class="language-bash">codex mcp add 名称 -- 启动命令</code></pre>
+<p><strong>示例</strong>：</p>
+<pre><code class="language-bash">codex mcp add context7 -- npx -y @upstash/context7-mcp</code></pre>
+<p>这条命令可以理解成：给 Codex 添加一个叫 context7 的 MCP，它通过 npx 启动 <code>@upstash/context7-mcp</code> 这个工具。</p>
+<h3 id="MCP配置文件在哪里">MCP 配置文件在哪里</h3>
+<p>Codex 的 MCP 配置会写进配置文件里。常见位置是：</p>
+<pre><code>~/.codex/config.toml</code></pre>
+<p>里面可能会有类似这样的配置：</p>
+<pre><code class="language-toml">[mcp_servers.context7]
+command = &quot;npx&quot;
+args = [&quot;-y&quot;, &quot;@upstash/context7-mcp&quot;]</code></pre>
+<blockquote>💡 如果你不熟悉配置文件，前期不要手动乱改。优先使用 <code>codex mcp add</code>、<code>codex mcp list</code>、<code>codex mcp remove</code>。</blockquote>
+<hr>
+<h2 id="36代码管理Git与GitHub工作流">3.6 代码管理（Git 与 GitHub 工作流）</h2>
+<p>用 Codex 做真实项目时，一定要懂一点 Git 和 GitHub。</p>
+<p>小白可以先这样理解：</p>
+<ul><li><strong>Git</strong> = 本地代码版本管理工具</li></ul>
+<ul><li><strong>GitHub</strong> = 把代码放到网上协作的平台</li></ul>
+<ul><li><strong>Codex</strong> = 帮你读代码、改代码、跑命令的 AI 编程助手</li></ul>
+<p>一句话：Git 负责记录代码变化。GitHub 负责远程保存和协作。Codex 负责帮你完成具体编程任务。</p>
+<h3 id="Git和GitHub有什么区别">Git 和 GitHub 有什么区别</h3>
+<div class="table-wrap"><table>
+<tr><th>对比</th><th>Git</th><th>GitHub</th></tr>
+<tr><td>简单来说</td><td>本地版本管理工具</td><td>代码云盘 + 协作平台</td></tr>
+<tr><td>主要作用</td><td>记录代码每次改了什么</td><td>远程保存代码、团队协作</td></tr>
+<tr><td>使用位置</td><td>你的电脑里</td><td>浏览器 / 云端</td></tr>
+<tr><td>核心能力</td><td>commit、branch、diff、merge</td><td>repository、issue、pull request</td></tr>
+<tr><td>是否必须联网</td><td>不需要</td><td>需要</td></tr>
+<tr><td>和 Codex 的关系</td><td>Codex 改完代码后，用 Git 检查和保存</td><td>Codex Web / Cloud 常和 GitHub 配合</td></tr>
+</table></div>
+<h3 id="小白必须先懂的Git概念">小白必须先懂的 Git 概念</h3>
+<div class="table-wrap"><table>
+<tr><th>概念</th><th>简单来说</th><th>作用</th></tr>
+<tr><td>Repository</td><td>一个代码仓库</td><td>存放整个项目</td></tr>
+<tr><td>Commit</td><td>一次代码存档</td><td>记录这次改了什么</td></tr>
+<tr><td>Branch</td><td>分支</td><td>在不影响主线的情况下改代码</td></tr>
+<tr><td>Diff</td><td>改动对比</td><td>看新增、删除、修改了什么</td></tr>
+<tr><td>Stage</td><td>暂存区</td><td>准备把哪些改动保存进 commit</td></tr>
+<tr><td>Merge</td><td>合并</td><td>把一个分支的改动合到另一个分支</td></tr>
+<tr><td>Conflict</td><td>冲突</td><td>两边改了同一处代码，需要手动选择</td></tr>
+<tr><td>Push</td><td>推送</td><td>把本地代码上传到 GitHub</td></tr>
+<tr><td>Pull</td><td>拉取</td><td>把 GitHub 上的新代码同步到本地</td></tr>
+<tr><td>Clone</td><td>克隆</td><td>从 GitHub 下载一个项目到本地</td></tr>
+</table></div>
+<h3 id="为什么用Codex更需要Git">为什么用 Codex 更需要 Git</h3>
+<div class="table-wrap"><table>
+<tr><th>场景</th><th>为什么需要 Git</th></tr>
+<tr><td>Codex 改了很多代码</td><td>可以查看具体改了哪里</td></tr>
+<tr><td>Codex 改错了</td><td>可以回退到之前版本</td></tr>
+<tr><td>Codex 删除了不该删的内容</td><td>可以用 Git 找回</td></tr>
+<tr><td>多次让 Codex 修改</td><td>每次 commit 保存一个阶段</td></tr>
+<tr><td>想让 Codex 大胆试方案</td><td>用 branch 或 worktree 隔离风险</td></tr>
+<tr><td>要把项目放到 GitHub</td><td>需要 push 到远程仓库</td></tr>
+<tr><td>团队协作</td><td>需要 PR、review、merge</td></tr>
+</table></div>
+<blockquote>一句话：没有 Git，Codex 改错了你很难回退。有了 Git，Codex 可以放心试，你可以随时检查和恢复。</blockquote>
+<h3 id="如何在Codex中使用Git">如何在 Codex 中使用 Git</h3>
+<div class="table-wrap"><table>
+<tr><th>步骤</th><th>操作</th><th>目的</th></tr>
+<tr><td>1</td><td>初始化 Git</td><td>让项目开始被 Git 管理</td></tr>
+<tr><td>2</td><td>写好 .gitignore</td><td>防止上传垃圾文件和密钥</td></tr>
+<tr><td>3</td><td>先 commit 一次</td><td>保存干净版本</td></tr>
+<tr><td>4</td><td>新建分支</td><td>给 Codex 一个安全实验区</td></tr>
+<tr><td>5</td><td>让 Codex 修改代码</td><td>完成具体任务</td></tr>
+<tr><td>6</td><td>查看 diff</td><td>检查 Codex 改了什么</td></tr>
+<tr><td>7</td><td>运行项目 / 构建</td><td>确认没出错</td></tr>
+<tr><td>8</td><td>满意后 commit</td><td>保存这次修改</td></tr>
+<tr><td>9</td><td>push 到 GitHub</td><td>上传远程仓库</td></tr>
+<tr><td>10</td><td>创建 PR</td><td>合并前再检查一次</td></tr>
+</table></div>
+<p>在 Codex 对话框中输入：</p>
+<pre><code>把项目初始化成一个 Git 工程，并排除不需要的文件</code></pre>
+<p>Codex 会帮我们直接写好 .gitignore 文件。</p>
+<h3 id="标准上传流程">标准上传流程</h3>
+<div class="table-wrap"><table>
+<tr><th>步骤</th><th>操作</th><th>目的</th></tr>
+<tr><td>1</td><td>在 GitHub 新建仓库</td><td>创建一个远程项目空间</td></tr>
+<tr><td>2</td><td>复制仓库地址</td><td>后面要连接本地项目</td></tr>
+<tr><td>3</td><td>将地址复制给 Codex</td><td>让 Codex 知道要上传到哪个仓库</td></tr>
+<tr><td>4</td><td>推送到 GitHub</td><td>正式上传代码</td></tr>
+</table></div>
+<h3 id="代码回滚">代码回滚</h3>
+<p>如果 Codex 改错了，可以回滚到之前的版本：</p>
+<p>1. 先让 Codex 修改代码 2. 提交到 Git，保存好当前版本 3. 继续修改代码 4. 打开 IDE 查看代码并回退代码 5. 复制版本号给 Codex，让它回退代码到指定版本</p>
+<h3 id="GitWorktree进阶">Git Worktree（进阶）</h3>
+<p>给同一个 Git 项目，额外开一个独立工作副本。相当于一个草稿本，效果满意后再合并回正式项目。</p>
+<div class="table-wrap"><table>
+<tr><th>场景</th><th>Worktree 的作用</th></tr>
+<tr><td>想让 Codex 大胆改代码</td><td>给它单独开一个副本</td></tr>
+<tr><td>不想影响当前项目</td><td>主项目保持不动</td></tr>
+<tr><td>想同时做多个任务</td><td>每个任务一个 worktree</td></tr>
+<tr><td>想比较多个方案</td><td>方案 A / B / C 分开放</td></tr>
+<tr><td>改坏了不想要</td><td>直接丢掉 worktree</td></tr>
+<tr><td>做大改动 / 重构</td><td>降低污染主项目的风险</td></tr>
+</table></div>
+<hr>
+<h2 id="37记忆系统">3.7 记忆系统</h2>
+<p>让 Codex 记住一些长期有用的信息，方便以后继续工作。</p>
+<h3 id="项目级AGENTSmd">项目级 AGENTS.md</h3>
+<p>AGENTS.md 是写给 Codex 看的项目规则说明书。</p>
+<div class="table-wrap"><table>
+<tr><th>文件</th><th>主要读者</th><th>作用</th></tr>
+<tr><td>README.md</td><td>人</td><td>告诉人这个项目是什么、怎么安装、怎么使用</td></tr>
+<tr><td>AGENTS.md</td><td>Codex / AI Agent</td><td>告诉 AI 在这个项目里应该怎么工作</td></tr>
+<tr><td>.gitignore</td><td>Git</td><td>告诉 Git 哪些文件不要上传</td></tr>
+</table></div>
+<h3 id="AGENTSmd放在哪里">AGENTS.md 放在哪里</h3>
+<div class="table-wrap"><table>
+<tr><th>放置位置</th><th>作用范围</th><th>简单来说</th></tr>
+<tr><td>项目根目录 AGENTS.md</td><td>整个项目</td><td>当前项目的总规则</td></tr>
+<tr><td>子目录里的 AGENTS.md</td><td>当前子目录及相关任务</td><td>某个模块的专属规则</td></tr>
+<tr><td>用户级 ~/.codex/AGENTS.md</td><td>你所有项目</td><td>个人通用规则</td></tr>
+<tr><td>项目级 + 用户级</td><td>叠加生效</td><td>个人习惯 + 当前项目规则</td></tr>
+</table></div>
+<h3 id="如何写AGENTSmd">如何写 AGENTS.md</h3>
+<p>可以直接交给 AI 来写，让 AI 总结这个项目的核心内容制作成 AGENTS.md。</p>
+<p><strong>前端项目 AGENTS.md 模板</strong>：</p>
+<pre><code class="language-markdown"># AGENTS.md
+
+## 项目说明
+这是一个前端网页项目，用于构建产品页面、工具页面或个人作品展示页面。
+
+## 技术栈
+- React
+- Vite
+- Tailwind CSS
+- JavaScript / TypeScript
+
+## 常用命令
+- 安装依赖：`npm install`
+- 启动项目：`npm run dev`
+- 构建项目：`npm run build`
+
+## 项目结构
+- `src/`：主要源代码
+- `src/components/`：通用组件
+- `src/pages/`：页面文件
+- `src/assets/`：图片、图标等静态资源
+- `public/`：公开静态文件
+
+## 代码规范
+- 优先使用 React 函数组件
+- 优先使用 Tailwind CSS 写样式
+- 不要引入 Bootstrap
+- 不要大范围重构无关代码
+- 修改时保持文件结构清晰
+- 中文文案要自然、简洁、适合普通用户阅读
+
+## UI 规则
+- 页面要有清晰的信息层级
+- 按钮、卡片、标题、留白要统一
+- 移动端要基本可用
+- 不要过度渐变、阴影和 AI 模板感
+- 优先做真实产品感，而不是 Demo 感
+
+## 禁止事项
+- 不要修改 `.env`、`.env.local`
+- 不要输出 API Key、token、密码
+- 不要删除已有核心功能
+- 不要随意新增大型依赖
+- 不要直接改动和当前任务无关的文件
+
+## 完成任务后
+每次修改完成后，请输出：
+1. 修改了哪些文件
+2. 每个文件改了什么
+3. 为什么这样改
+4. 是否需要运行 `npm run build`
+5. 提醒我检查 diff</code></pre>
+<h3 id="好的AGENTSmd有什么特点">好的 AGENTS.md 有什么特点</h3>
+<div class="table-wrap"><table>
+<tr><th>特点</th><th>说明</th></tr>
+<tr><td>具体</td><td>写清楚技术栈、命令、目录</td></tr>
+<tr><td>简洁</td><td>不要写成长篇废话</td></tr>
+<tr><td>可执行</td><td>Codex 看了知道怎么做</td></tr>
+<tr><td>有限制</td><td>明确哪些文件不能碰</td></tr>
+<tr><td>有验证</td><td>写清楚运行什么命令检查</td></tr>
+<tr><td>有完成标准</td><td>让 Codex 知道交付什么</td></tr>
+<tr><td>可维护</td><td>项目变化后及时更新</td></tr>
+</table></div>
+<h3 id="全局级AGENTSmd">全局级 AGENTS.md</h3>
+<p>打开 Codex 的设置，找到个性化，输入指令。这里的指令会作为你的个人通用偏好影响后续 Codex 会话。</p>
+<p><strong>示例：防止 AI 乱删文件</strong></p>
+<pre><code>禁止批量删除文件或目录。
+不要使用：
+  del /s
+  rd /s
+  rmdir /s
+  Remove-Item -Recurse
+  rm -rf
+
+需要删除文件时，只能一次删除一个明确路径的文件。
+正确示例：
+  Remove-Item &quot;C:\path\to\file.txt&quot;
+
+如果需要批量删除文件，应停止操作，并向用户请求，让用户手动删除。</code></pre>
+<hr>
+<h2 id="38自动化进阶">3.8 自动化（进阶）</h2>
+<h3 id="什么是自动化">什么是自动化</h3>
+<p>让 Codex 按规则定期帮你巡查项目、发现问题、处理问题。就像给项目请了一个&quot;AI 值班工程师&quot;：平时它不打扰你，有问题它来提醒你，简单问题它先尝试修，最后让你审核决定。</p>
+<h3 id="示例">示例</h3>
+<pre><code>请检索并复盘最近一周的 Codex 会话记录与执行日志，维护一份&quot;Codex 会话复盘与个人风格档案&quot;。
+
+要求：
+1. 优先使用可用的会话历史检索能力
+2. 不要复现原始日志、隐私内容、密钥
+3. 总结执行经验：哪些做法导致了问题，最终正确做法是什么
+4. 总结我的偏好：UI 设计偏好、产品理念、交互原则
+5. 整理可复用规则清单
+6. 如有适合长期复用的规则，请建议是否加入 AGENTS.md</code></pre>
+<blockquote>自动化属于进阶功能，普通用户可以先不用管。</blockquote>
+<hr>
+<h2 id="39云端运行">3.9 云端运行</h2>
+<p>Codex 的云端任务适合在你不方便一直开着本地电脑时继续处理工作；如果你的账号和客户端支持移动端入口，也可以在外出时查看或推进部分任务。</p>
+<h3 id="小白可以这样理解">小白可以这样理解</h3>
+<div class="table-wrap"><table>
+<tr><th>模式</th><th>运行位置</th><th>简单来说</th></tr>
+<tr><td>Local</td><td>你的电脑本地项目</td><td>Codex 直接改你电脑里的代码</td></tr>
+<tr><td>Worktree</td><td>你的电脑本地副本</td><td>Codex 在安全副本里改代码</td></tr>
+<tr><td>Cloud</td><td>OpenAI 云端环境</td><td>Codex 在云端拉取 GitHub 仓库并处理任务</td></tr>
+</table></div>
+<h3 id="云端运行是什么">云端运行是什么</h3>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>说明</th></tr>
+<tr><td>运行环境</td><td>云端容器</td></tr>
+<tr><td>代码来源</td><td>GitHub 仓库</td></tr>
+<tr><td>工作方式</td><td>Codex 在云端读取、修改、运行、验证代码</td></tr>
+<tr><td>最终结果</td><td>生成修改结果、diff，必要时创建 PR</td></tr>
+<tr><td>适合任务</td><td>修 bug、改功能、写文档、代码 review、处理 issue</td></tr>
+<tr><td>不适合任务</td><td>本地私密文件、没有上传 GitHub 的项目、高风险生产操作</td></tr>
+</table></div>
+<h3 id="云端运行和本地运行的区别">云端运行和本地运行的区别</h3>
+<div class="table-wrap"><table>
+<tr><th>对比</th><th>本地运行</th><th>云端运行</th></tr>
+<tr><td>代码位置</td><td>你电脑里</td><td>GitHub 仓库</td></tr>
+<tr><td>运行位置</td><td>你的电脑</td><td>云端容器</td></tr>
+<tr><td>是否占用电脑</td><td>会占用</td><td>基本不占用</td></tr>
+<tr><td>是否需要 GitHub</td><td>不一定</td><td>通常需要</td></tr>
+<tr><td>是否适合后台任务</td><td>一般</td><td>很适合</td></tr>
+<tr><td>是否适合并行任务</td><td>一般</td><td>很适合</td></tr>
+<tr><td>权限风险</td><td>主要是本机文件权限</td><td>主要是仓库、环境变量、网络权限</td></tr>
+<tr><td>适合新手吗</td><td>更适合先学</td><td>学会 GitHub 后再用</td></tr>
+</table></div>
+<h3 id="云端运行操作步骤">云端运行操作步骤</h3>
+<p>1. 推送代码到 GitHub 2. 打开 Codex Web 3. 选择要修改的仓库 4. 让 Codex 工作 5. 修改完成后上传到 GitHub 仓库 6. 本地修改前先同步 GitHub 仓库里的最新代码</p>
+<blockquote>💡 如果云端任务已经把修改推回 GitHub，本地继续开发前要先同步最新代码，避免在旧版本上继续修改导致冲突。</blockquote>
+<hr>
+<h1 id="第四篇标准工作流">第四篇：标准工作流</h1>
+<h2 id="从需求到交付的完整链路">从需求到交付的完整链路</h2>
+<p>很多人刚开始用 Codex，会直接一句话丢给它：</p>
+<blockquote>&quot;帮我做一个网站。&quot;</blockquote>
+<blockquote>&quot;帮我改这个功能。&quot;</blockquote>
+<blockquote>&quot;帮我优化这个项目。&quot;</blockquote>
+<p>这样不是不行，但很容易出现一个问题：AI 改得很快，但你不知道它到底改了什么，也不知道能不能放心交付。</p>
+<p>所以真正稳定的方式，不是让 Codex 一口气乱改，而是按照一套固定工作流来推进。你可以把它理解成：需求不是直接变成交付物，中间必须经过&quot;理解、计划、修改、验证、检查、验收&quot;这几步。</p>
+<h3 id="标准六步法">标准六步法</h3>
+<div class="table-wrap"><table>
+<tr><th>步骤</th><th>名称</th><th>简单来说</th><th>目的</th></tr>
+<tr><td>1</td><td>需求拆解</td><td>先让 Codex 知道要做的项目是什么</td><td>避免不了解结构就乱改</td></tr>
+<tr><td>2</td><td>制定计划</td><td>先列出要做什么，确认后再动手</td><td>避免一步改太多、方向跑偏</td></tr>
+<tr><td>3</td><td>小步实现</td><td>一次只改一小块</td><td>降低出错概率，方便回滚</td></tr>
+<tr><td>4</td><td>测试</td><td>改完后运行检查并手动验证</td><td>确认代码没有明显报错</td></tr>
+<tr><td>5</td><td>代码审查</td><td>看 diff，检查改得对不对、有没有风险</td><td>防止 AI 改到不该改的地方</td></tr>
+<tr><td>6</td><td>提交与复盘</td><td>提交代码并沉淀经验</td><td>AI 负责执行，人负责拍板</td></tr>
+</table></div>
+<h3 id="第一步需求拆解">第一步：需求拆解</h3>
+<p>在让 Codex 修改项目之前，第一件事不是写代码，而是先拆需求。很多人用 Codex 容易翻车，不是因为 Codex 不会写代码，而是因为一开始需求没说清楚。</p>
+<p>比如你只说&quot;帮我优化首页&quot;，Codex 可能会理解成：改 UI、改文案、改布局、改组件结构、改路由，甚至顺手删掉一些它觉得&quot;没用&quot;的代码。</p>
+<p><strong>好的需求应该能回答</strong>：</p>
+<div class="table-wrap"><table>
+<tr><th>问题</th><th>示例</th></tr>
+<tr><td>背景是什么</td><td>这是一个已经上线的官网页面</td></tr>
+<tr><td>要解决什么问题</td><td>首屏转化率低，用户不知道产品卖点</td></tr>
+<tr><td>哪些文件可能相关</td><td><code>app/page.tsx</code>、<code>components/Hero.tsx</code></td></tr>
+<tr><td>哪些功能不能动</td><td>不要改登录逻辑、接口地址、数据结构</td></tr>
+<tr><td>什么结果算完成</td><td>首屏标题清晰、CTA 按钮明显、移动端适配</td></tr>
+<tr><td>需要哪些测试</td><td>页面预览、构建测试、移动端测试</td></tr>
+</table></div>
+<p><strong>需求拆解提示词模板</strong>（可直接复制）：</p>
+<pre><code>请先帮我做需求拆解，不要立刻修改代码。
+
+需求：【这里写你的需求】
+
+请按下面结构分析：
+
+1. 背景是什么
+- 当前项目大概是什么
+- 为什么要做这个需求
+- 这个需求属于新功能、Bug 修复、UI 优化，还是重构
+
+2. 要解决什么问题
+- 当前具体问题是什么
+- 本次要解决到什么程度
+- 哪些内容不是本次范围
+
+3. 哪些文件可能相关
+- 请根据项目结构判断可能涉及哪些文件
+- 先列出来，不要直接修改
+
+4. 哪些功能不能动
+- 不要改哪些逻辑
+- 不要动哪些接口
+- 不要影响哪些页面或组件
+
+5. 什么结果算完成
+- 功能完成标准
+- 页面完成标准
+- 代码完成标准
+
+6. 需要哪些测试
+- 需要运行什么命令
+- 需要手动检查哪些页面
+
+7. 有哪些风险
+- 可能影响哪些功能
+- 是否有样式污染风险
+
+最后，请给我一个简短的执行建议：
+- 建议先做哪一步
+- 是否需要我确认后再修改</code></pre>
+<h3 id="第二步制定计划">第二步：制定计划</h3>
+<p>需求拆解完成后，不要马上让 Codex 写代码。这一步要让 Codex 先制定计划。很多项目翻车，不是因为 Codex 不会改，而是因为它一上来就开始改。等你发现方向不对时，它可能已经改了很多文件，回头检查和回滚都很麻烦。</p>
+<p>所以第二步的核心是：<strong>先计划，后执行。先确认，后修改。</strong></p>
+<pre><code>先不要写代码，也不要修改任何文件。
+请先根据当前需求和项目结构，制定一个修改计划。
+等我确认后，再开始执行。</code></pre>
+<h3 id="第三步小步实现">第三步：小步实现</h3>
+<p>计划确认后，才进入真正的代码修改阶段。但这里有一个非常重要的原则：<strong>不要让 Codex 一次性把所有东西都改完。</strong></p>
+<p>比如你要优化首页，不要一次性说&quot;请帮我优化整个首页&quot;。更推荐拆成这样：</p>
+<div class="table-wrap"><table>
+<tr><th>步骤</th><th>修改内容</th></tr>
+<tr><td>第一步</td><td>只优化首屏标题和副标题</td></tr>
+<tr><td>第二步</td><td>只调整 CTA 按钮</td></tr>
+<tr><td>第三步</td><td>只优化移动端布局</td></tr>
+<tr><td>第四步</td><td>只补充产品卖点卡片</td></tr>
+<tr><td>第五步</td><td>只处理最终样式细节</td></tr>
+</table></div>
+<blockquote>⚠️ 不要让 Codex 顺手重构无关代码。Codex 有时候会觉得某些代码&quot;不够优雅&quot;，然后顺手帮你重构。但真实项目里，顺手重构是很危险的。</blockquote>
+<p><strong>小步实现提示词模板</strong>：</p>
+<pre><code>请开始小步实现。
+
+当前只执行第【1】步：
+【这里写本次只做的一个功能点】
+
+要求：
+1. 一次只改这个功能点
+2. 只修改和当前功能直接相关的文件
+3. 不要顺手重构无关代码
+4. 不要修改目录结构
+5. 不要新增不必要依赖
+6. 不要删除已有功能
+7. 不要改计划外的文件
+
+修改完成后请停止，并输出：
+1. 本次修改了哪些文件
+2. 每个文件改了什么
+3. 为什么这些修改是必要的
+4. 有没有改到计划外内容
+5. 有没有潜在风险
+6. 下一步建议做什么
+
+注意：
+如果遇到不确定的地方，请先停下来问我，不要自行决定。</code></pre>
+<h3 id="第四步测试">第四步：测试</h3>
+<p>Codex 完成小步修改后，不能马上进入下一步，必须先测试。</p>
+<p><strong>测试清单</strong>（按从快到慢的顺序执行）：</p>
+<div class="table-wrap"><table>
+<tr><th>测试类型</th><th>作用</th><th>常见命令</th></tr>
+<tr><td>单元测试</td><td>检查函数、组件、模块是否正常</td><td><code>npm test</code></td></tr>
+<tr><td>类型检查</td><td>TypeScript 项目提前发现类型错误</td><td><code>npm run typecheck</code></td></tr>
+<tr><td>lint</td><td>检查代码规范问题</td><td><code>npm run lint</code></td></tr>
+<tr><td>构建</td><td>本地能打开不代表能上线，构建才说明能打包</td><td><code>npm run build</code></td></tr>
+<tr><td>手动测试</td><td>UI、表单、登录、支付、上传必须手动点一遍</td><td>——</td></tr>
+<tr><td>浏览器测试</td><td>终端看不出来的页面/控制台/接口问题</td><td>——</td></tr>
+<tr><td>回归测试</td><td>不只测新功能，还要测旧功能有没有被改坏</td><td>——</td></tr>
+</table></div>
+<h3 id="第五步代码审查">第五步：代码审查</h3>
+<p>测试通过后，不代表这次修改就可以直接交付。还需要做代码审查。</p>
+<p><strong>两轮审查：Codex 自审 + 人工审查</strong></p>
+<p>第一轮先让 Codex 自查刚才的修改，最好让它输出成表格：</p>
+<div class="table-wrap"><table>
+<tr><th>检查项</th><th>结果</th><th>说明</th></tr>
+<tr><td>是否改到计划外文件</td><td>否</td><td>只修改了首页相关组件</td></tr>
+<tr><td>是否新增依赖</td><td>否</td><td>没有修改 package.json</td></tr>
+<tr><td>是否删除旧逻辑</td><td>否</td><td>原有按钮跳转逻辑保留</td></tr>
+<tr><td>是否存在风险</td><td>有</td><td>移动端按钮间距还需人工确认</td></tr>
+</table></div>
+<p>第二轮人工审查。最终交付的人是你，不是 Codex。</p>
+<p><strong>重点盯四类高风险问题</strong>：</p>
+<div class="table-wrap"><table>
+<tr><th>类别</th><th>常见问题</th><th>审查要点</th></tr>
+<tr><td>边界条件</td><td>正常输入能用、异常输入就崩</td><td>空数据、接口失败、未登录、权限不足、移动端尺寸</td></tr>
+<tr><td>安全问题</td><td>涉及用户/接口/权限/支付时</td><td>是否暴露密钥 token、权限判断是否缺失、输入是否校验</td></tr>
+<tr><td>是否误删</td><td>看似没用、实际有用的代码被删</td><td>重点看 diff 的删除内容</td></tr>
+<tr><td>业务逻辑</td><td>代码能跑但逻辑错</td><td>正常路径、异常路径、权限判断</td></tr>
+</table></div>
+<h3 id="第六步提交与复盘">第六步：提交与复盘</h3>
+<p>代码测试通过、审查完成后，最后一步不是简单地说&quot;完成了&quot;。真正完整的 Codex 工作流，还需要做两件事：把这次修改正式提交，把这次经验沉淀下来。</p>
+<p><strong>好的 commit 应该能回答</strong>：</p>
+<div class="table-wrap"><table>
+<tr><th>问题</th><th>说明</th></tr>
+<tr><td>改了什么</td><td>本次提交的主要内容</td></tr>
+<tr><td>为什么改</td><td>对应什么需求或问题</td></tr>
+<tr><td>影响哪里</td><td>涉及哪些模块、页面或功能</td></tr>
+<tr><td>是否通过测试</td><td>是否构建、lint、测试通过</td></tr>
+</table></div>
+<p>常见 commit message 格式：</p>
+<pre><code>feat: add user profile page
+fix: resolve login redirect issue
+style: improve homepage responsive layout
+refactor: simplify product card component
+docs: update setup guide</code></pre>
+<p><strong>复盘时要记录</strong>：</p>
+<div class="table-wrap"><table>
+<tr><th>问题类型</th><th>示例</th></tr>
+<tr><td>需求问题</td><td>一开始需求描述不够清楚</td></tr>
+<tr><td>计划问题</td><td>Codex 计划里漏掉了移动端</td></tr>
+<tr><td>修改问题</td><td>Codex 顺手改了无关组件</td></tr>
+<tr><td>测试问题</td><td>项目没有 typecheck 命令</td></tr>
+<tr><td>审查问题</td><td>发现它误删了 fallback 逻辑</td></tr>
+<tr><td>沟通问题</td><td>提示词没有明确&quot;不要新增依赖&quot;</td></tr>
+</table></div>
+<blockquote>💡 交付不是结束，复盘才是下一次效率提升的开始。</blockquote>
+<hr>
+<h2 id="Codex任务模板库">Codex 任务模板库</h2>
+<blockquote>不用每次重新想 Prompt，直接按场景复制，然后填入自己的需求。</blockquote>
+<h3 id="读项目模板">读项目模板</h3>
+<pre><code>请先不要修改任何代码。
+
+请阅读当前项目，并输出一份项目理解报告，包括：
+
+1. 技术栈
+- 项目使用了哪些主要技术
+- 前端/后端/数据库/构建工具分别是什么
+
+2. 目录结构
+- 主要目录分别负责什么
+- 页面、组件、工具函数、接口、配置文件分别在哪里
+- 哪些目录是核心目录，不建议随便改
+
+3. 启动方式
+- 项目如何安装依赖
+- 项目如何本地启动
+- 是否需要环境变量
+
+4. 测试命令
+- 项目是否有 test / lint / typecheck / build 命令
+
+5. 核心模块
+- 项目的核心功能模块有哪些
+- 后续要修改功能，应该优先查看哪些文件
+
+6. 后续修改风险
+- 哪些文件或目录改动风险较高
+- 是否存在全局样式、鉴权、接口等高风险区域
+
+请只输出项目理解报告，不要修改代码。
+输出完成后等待我确认。</code></pre>
+<h3 id="修Bug模板">修 Bug 模板</h3>
+<pre><code>我遇到一个 bug：
+  【现象】
+  【复现步骤】
+  【期望结果】
+  【实际结果】
+  【相关文件/页面】
+
+请先定位原因，不要直接修改。
+先给出：
+1. 可能原因
+2. 需要查看的文件
+3. 修复方案
+4. 风险点
+
+等我确认后再改代码。</code></pre>
+<h3 id="加功能模板">加功能模板</h3>
+<pre><code>我想新增一个功能：
+  【功能描述】
+  【入口位置】
+  【交互流程】
+  【视觉要求】
+  【数据来源】
+  【验收标准】
+
+请先阅读相关代码，给出实现计划。
+不要改无关文件。
+实现后请运行测试并总结 diff。</code></pre>
+<h3 id="前端页面模板">前端页面模板</h3>
+<pre><code>请根据下面要求实现一个页面：
+  【页面用途】
+  【目标用户】
+  【视觉风格】
+  【模块结构】
+  【中文文案】
+  【响应式要求】
+  【不要出现的问题】
+
+请先给出组件拆分方案，再开始实现。</code></pre>
+<h3 id="代码审查模板">代码审查模板</h3>
+<pre><code>请审查当前分支相对 main 的 diff。
+重点检查：
+1. 潜在 bug
+2. 边界条件
+3. 安全风险
+4. 类型问题
+5. 性能问题
+6. 是否有无关修改
+7. 测试是否充分
+
+请不要直接修改代码，先输出 review 报告。</code></pre>
+<h3 id="重构模板">重构模板</h3>
+<pre><code>请重构以下模块：
+【模块路径】
+
+目标是：
+1. 提高可读性
+2. 减少重复代码
+3. 保持现有行为不变
+4. 不改变公共 API
+5. 不引入新依赖
+
+请先写重构计划，并说明如何验证行为一致。</code></pre>
+<h3 id="写测试模板">写测试模板</h3>
+<pre><code>请为以下功能补充测试：
+  【功能描述】
+  【相关文件】
+  【边界情况】
+
+要求：
+1. 不改业务逻辑
+2. 覆盖正常路径
+3. 覆盖异常路径
+4. 覆盖边界条件
+5. 运行测试并报告结果</code></pre>
+<h3 id="写文档模板">写文档模板</h3>
+<pre><code>请根据当前项目生成文档：
+1. 项目简介
+2. 安装方式
+3. 启动方式
+4. 环境变量说明
+5. 常用命令
+6. 目录结构
+7. 开发注意事项
+8. 常见问题
+
+请不要编造不存在的命令，必须基于项目文件判断。</code></pre>
+<hr>
+<h1 id="第五篇场景化最佳实践">第五篇：场景化最佳实践</h1>
+<h2 id="新手第一周怎么用Codex">新手第一周怎么用 Codex</h2>
+<h3 id="Day1安装和熟悉界面">Day 1：安装和熟悉界面</h3>
+<p>1. 安装 Codex App 2. 登录 ChatGPT 账号 3. 选择一个练习目录 4. 新建一个对话，随便聊几句，熟悉界面</p>
+<h3 id="Day2让Codex读项目">Day 2：让 Codex 读项目</h3>
+<pre><code>请先不要修改任何代码。
+请阅读当前项目，并输出一份项目理解报告。</code></pre>
+<p>让 Codex 帮你搞清楚项目的技术栈、目录结构、启动方式。</p>
+<h3 id="Day3修第一个小Bug">Day 3：修第一个小 Bug</h3>
+<p>找一个边界清楚的小 Bug，按标准六步法走一遍： 1. 需求拆解 2. 制定计划 3. 小步实现 4. 测试 5. 代码审查 6. 提交</p>
+<h3 id="Day4-5加一个小功能">Day 4-5：加一个小功能</h3>
+<p>比如新增一个设置页、一个表单校验、一个导出按钮。继续按六步法走。</p>
+<h3 id="Day6-7写文档复盘">Day 6-7：写文档 + 复盘</h3>
+<p>让 Codex 帮你写 README、更新文档。复盘这一周的问题，沉淀成 AGENTS.md。</p>
+<blockquote>💡 <strong>新手避坑</strong>：第一周不要让 Codex 做大项目，先从小任务练手，熟悉它的工作方式。</blockquote>
+<hr>
+<h2 id="做网站的最佳实践">做网站的最佳实践</h2>
+<h3 id="项目结构建议">项目结构建议</h3>
+<pre><code>my-website/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   └── main.js
+├── images/
+└── README.md</code></pre>
+<h3 id="推荐流程">推荐流程</h3>
+<p>1. <strong>先出计划</strong>：让 Codex 列出页面结构、组件拆分 2. <strong>分页面实现</strong>：一次只做一个页面 3. <strong>本地预览</strong>：每个页面做完先预览 4. <strong>细节优化</strong>：逐项调整样式 5. <strong>Git 提交</strong>：每个阶段 commit 一次 6. <strong>部署上线</strong>：推送到 GitHub，开启 GitHub Pages</p>
+<h3 id="常见问题">常见问题</h3>
+<div class="table-wrap"><table>
+<tr><th>问题</th><th>解决方法</th></tr>
+<tr><td>页面样式不像预期</td><td>用具体描述，不要说&quot;好看一点&quot;</td></tr>
+<tr><td>移动端乱版</td><td>明确要求&quot;响应式适配，移动端不变形&quot;</td></tr>
+<tr><td>Codex 顺手重构</td><td>提前说&quot;不要重构无关代码&quot;</td></tr>
+<tr><td>部署后打不开</td><td>检查 GitHub Pages 设置；不同地区网络可能不同</td></tr>
+</table></div>
+<hr>
+<h2 id="做PPT的最佳实践">做 PPT 的最佳实践</h2>
+<h3 id="推荐流程">推荐流程</h3>
+<p>1. <strong>安装 PPT Skill 或插件</strong>：如 Presentations 插件 2. <strong>描述需求</strong>：主题、页数、风格、内容大纲 3. <strong>审查 PPT</strong>：逐页检查 4. <strong>细节优化</strong>：逐项调整 5. <strong>导出成品</strong>：导出为 PPTX</p>
+<h3 id="需求描述建议">需求描述建议</h3>
+<pre><code>请帮我制作一份 PPT：
+【主题】：产品招商
+【页数】：10 页
+【风格】：专业、简约
+【内容大纲】：
+1. 封面
+2. 公司介绍
+3. 产品亮点
+4. 市场分析
+5. 合作方案
+6. 联系方式
+
+请先给出大纲，确认后再生成。</code></pre>
+<hr>
+<h2 id="代码审查的最佳实践">代码审查的最佳实践</h2>
+<h3 id="两轮审查">两轮审查</h3>
+<p>1. <strong>Codex 自审</strong>：让 Codex 输出审查表格 2. <strong>人工审查</strong>：重点看 diff 的删除内容和边界条件</p>
+<h3 id="审查重点">审查重点</h3>
+<div class="table-wrap"><table>
+<tr><th>类别</th><th>审查要点</th></tr>
+<tr><td>文件范围</td><td>是否只改了该改的文件</td></tr>
+<tr><td>删除内容</td><td>是否删掉了旧功能</td></tr>
+<tr><td>边界条件</td><td>空数据、接口失败、未登录怎么处理</td></tr>
+<tr><td>安全问题</td><td>是否暴露密钥、权限判断是否缺失</td></tr>
+<tr><td>业务逻辑</td><td>能跑 ≠ 逻辑对</td></tr>
+</table></div>
+<blockquote>⚠️ 涉及登录、支付、权限、数据库的重要代码，建议用第二个模型做交叉审查。</blockquote>
+<hr>
+<h1 id="第六篇实战案例库">第六篇：实战案例库</h1>
+<hr>
+<h2 id="实战案例一从零搭建一个产品官网">实战案例一：从零搭建一个产品官网</h2>
+<h3 id="场景描述">场景描述</h3>
+<p>你需要为一个新产品搭建一个官网，从开发到 GitHub 部署一气呵成。</p>
+<h3 id="执行步骤">执行步骤</h3>
+<p><strong>第一步：创建项目目录</strong></p>
+<pre><code>D:\AI-Codex-Projects\product-website</code></pre>
+<p><strong>第二步：描述需求</strong></p>
+<pre><code>请帮我开发一个产品官网，要求：
+
+【产品名称】：AI 笔记助手
+【页面结构】：
+- 首页：Hero 区 + 功能亮点 + 用户评价 + CTA
+- 功能页：3 个核心功能详细介绍
+- 定价页：3 档定价方案
+- 关于我们：团队介绍
+
+【风格】：现代简约，主色蓝色系，响应式适配
+【技术栈】：HTML + CSS + JavaScript（纯前端）
+
+请先制定计划，确认后再执行。</code></pre>
+<p><strong>第三步：审查计划并执行</strong></p>
+<p><strong>第四步：本地预览</strong></p>
+<pre><code>请打开 index.html 让我预览效果</code></pre>
+<p><strong>第五步：细节优化</strong></p>
+<pre><code>请调整导航栏字体为无衬线、CTA 按钮颜色加深、用户评价区换成 3 列布局</code></pre>
+<p><strong>第六步：Git 管理</strong></p>
+<pre><code>请提交代码到 GitHub：
+1. git init
+2. git add -A
+3. git commit -m &quot;feat: AI笔记助手产品官网&quot;
+4. 创建 GitHub 仓库并推送
+5. 可选：开启 GitHub Pages 发布</code></pre>
+<h3 id="效果">效果</h3>
+<ul><li>✅ 完整产品官网（4 个页面，响应式适配）</li></ul>
+<ul><li>✅ 代码已提交到 GitHub</li></ul>
+<ul><li>✅ 可选通过 GitHub Pages 发布</li></ul>
+<hr>
+<h2 id="实战案例二制作产品招商PPT">实战案例二：制作产品招商 PPT</h2>
+<h3 id="场景描述">场景描述</h3>
+<p>你需要为产品招商会准备一份 PPT。</p>
+<h3 id="执行步骤">执行步骤</h3>
+<p><strong>第一步：安装 PPT Skill / Presentations 插件</strong></p>
+<p><strong>第二步：生成 PPT</strong></p>
+<pre><code>/ppt-skill 帮我制作一份 AI 笔记助手的产品招商 PPT，10 页，专业风格
+
+内容大纲：
+1. 封面
+2. 公司介绍
+3. 产品亮点
+4. 市场分析
+5. 商业模式
+6. 合作方案
+7. 成功案例
+8. 团队介绍
+9. 未来规划
+10. 联系方式</code></pre>
+<p><strong>第三步：审查并优化</strong></p>
+<p><strong>第四步：导出成品</strong></p>
+<pre><code>请导出为 PPTX 文件，保存到桌面</code></pre>
+<h3 id="效果">效果</h3>
+<ul><li>✅ 10 页专业招商 PPT</li></ul>
+<ul><li>✅ 可导出为 PPTX 继续编辑</li></ul>
+<hr>
+<h2 id="实战案例三制作产品宣传视频">实战案例三：制作产品宣传视频</h2>
+<h3 id="场景描述">场景描述</h3>
+<p>你需要为产品制作一条宣传视频。</p>
+<h3 id="执行步骤">执行步骤</h3>
+<p><strong>第一步：安装视频插件</strong>（如 HyperFrames 或 Remotion）</p>
+<p><strong>第二步：描述视频需求</strong></p>
+<pre><code>请帮我制作一条 30 秒的产品宣传视频：
+
+【产品】：AI 笔记助手
+【卖点】：一键整理会议纪要
+【目标受众】：职场白领
+【风格】：科技感、快节奏、简洁
+【画面要求】：产品界面展示 + 文字动效 + 品牌 Logo</code></pre>
+<p><strong>第三步：审查视频</strong></p>
+<p><strong>第四步：导出成品</strong></p>
+<pre><code>请导出最终视频，保存为 MP4</code></pre>
+<h3 id="效果">效果</h3>
+<ul><li>✅ 30 秒产品宣传视频</li></ul>
+<ul><li>✅ 可导出为 MP4 用于各平台发布</li></ul>
+<hr>
+<h2 id="实战案例四代码审查与Bug修复">实战案例四：代码审查与 Bug 修复</h2>
+<h3 id="场景描述">场景描述</h3>
+<p>你是开发者，需要 Codex 帮你审查最近提交的代码，并修复潜在 Bug。</p>
+<h3 id="执行步骤">执行步骤</h3>
+<p><strong>第一步：检查最近提交</strong></p>
+<pre><code>请检查最近一周的 Git 提交，找出可能存在风险的代码变更</code></pre>
+<p><strong>第二步：执行代码审查</strong></p>
+<pre><code>请对最近 5 次提交执行 code review：
+1. 检查代码质量
+2. 检查是否有 Bug
+3. 检查是否有安全风险
+4. 评分（A/B/C/D）
+5. 如果发现 C 或 D 级问题，加上 ⚠️ 警告</code></pre>
+<p><strong>第三步：修复问题</strong></p>
+<pre><code>请修复刚才审查中发现的 B 级以上问题，优先修复安全相关 Bug</code></pre>
+<p><strong>第四步：运行测试</strong></p>
+<pre><code>请运行测试确认修复没有引入新问题：
+1. npm run test
+2. npm run build</code></pre>
+<p><strong>第五步：提交修复</strong></p>
+<pre><code>请提交修复：
+1. git add -A
+2. git commit -m &quot;fix: 修复代码审查发现的问题&quot;
+3. git push</code></pre>
+<h3 id="效果">效果</h3>
+<ul><li>✅ 5 次提交全部审查完成</li></ul>
+<ul><li>✅ 修复了潜在 Bug</li></ul>
+<ul><li>✅ 测试通过，代码已推送</li></ul>
+<hr>
+<h2 id="实战案例五数据分析与报告生成">实战案例五：数据分析与报告生成</h2>
+<h3 id="场景描述">场景描述</h3>
+<p>你有一份销售数据，需要生成分析报告。</p>
+<h3 id="执行步骤">执行步骤</h3>
+<p><strong>第一步：准备数据</strong></p>
+<p>把销售数据 Excel 放到项目目录：<code>sales-data.xlsx</code></p>
+<p><strong>第二步：描述分析需求</strong></p>
+<pre><code>请帮我分析 sales-data.xlsx 中的销售数据：
+
+1. 按月份汇总销售额
+2. 按地区汇总销售额
+3. 找出 Top 10 产品
+4. 计算同比增长率
+5. 生成带图表的分析报告</code></pre>
+<p><strong>第三步：审查报告</strong></p>
+<p><strong>第四步：导出报告</strong></p>
+<pre><code>请把分析报告导出为 PDF 和 Excel 两种格式</code></pre>
+<h3 id="效果">效果</h3>
+<ul><li>✅ 自动读取 Excel 数据</li></ul>
+<ul><li>✅ 生成多维度分析图表</li></ul>
+<ul><li>✅ 输出 PDF 和 Excel 报告</li></ul>
+<hr>
+<h2 id="实战案例六自动化测试">实战案例六：自动化测试</h2>
+<h3 id="场景描述">场景描述</h3>
+<p>你的项目缺少测试，需要 Codex 帮你补齐单元测试和边界测试。</p>
+<h3 id="执行步骤">执行步骤</h3>
+<p><strong>第一步：分析测试覆盖</strong></p>
+<pre><code>请分析当前项目的测试覆盖情况：
+1. 哪些模块有测试
+2. 哪些模块没有测试
+3. 哪些模块测试不充分</code></pre>
+<p><strong>第二步：补单元测试</strong></p>
+<pre><code>请为核心模块补充单元测试：
+1. 不改业务逻辑
+2. 覆盖正常路径
+3. 覆盖异常路径
+4. 覆盖边界条件
+5. 运行测试并报告结果</code></pre>
+<p><strong>第三步：补边界测试</strong></p>
+<pre><code>请补充以下边界情况的测试：
+1. 空数据
+2. 接口失败
+3. 用户未登录
+4. 权限不足
+5. 超大数据量</code></pre>
+<p><strong>第四步：运行并提交</strong></p>
+<pre><code>请运行全部测试，确认通过后提交：
+1. npm run test
+2. git add -A
+3. git commit -m &quot;test: 补充单元测试和边界测试&quot;
+4. git push</code></pre>
+<h3 id="效果">效果</h3>
+<ul><li>✅ 测试覆盖率提升</li></ul>
+<ul><li>✅ 边界情况覆盖</li></ul>
+<ul><li>✅ 后续修改有测试保障</li></ul>
+<hr>
+<h2 id="实战案例七技术文档生成">实战案例七：技术文档生成</h2>
+<h3 id="场景描述">场景描述</h3>
+<p>你的项目缺少文档，需要 Codex 帮你生成完整的工程文档。</p>
+<h3 id="执行步骤">执行步骤</h3>
+<p><strong>第一步：生成 README</strong></p>
+<pre><code>请根据当前项目生成 README：
+1. 项目简介
+2. 功能特点
+3. 安装步骤
+4. 启动命令
+5. 文件结构
+6. 常见问题
+7. 后续优化方向
+
+请不要编造不存在的功能，不确定的地方要明确标注。</code></pre>
+<p><strong>第二步：生成 API 文档</strong></p>
+<pre><code>请根据项目代码生成 API 文档：
+1. 接口列表
+2. 请求参数
+3. 返回格式
+4. 示例请求和响应</code></pre>
+<p><strong>第三步：生成开发指南</strong></p>
+<pre><code>请生成开发指南：
+1. 开发环境准备
+2. 项目结构说明
+3. 开发规范
+4. 提交规范
+5. 部署流程</code></pre>
+<p><strong>第四步：生成 AGENTS.md</strong></p>
+<pre><code>请根据项目情况生成 AGENTS.md，包含：
+1. 项目说明
+2. 技术栈
+3. 常用命令
+4. 项目结构
+5. 代码规范
+6. 禁止事项
+7. 完成任务后的输出要求</code></pre>
+<h3 id="效果">效果</h3>
+<ul><li>✅ 完整工程文档（README + API 文档 + 开发指南 + AGENTS.md）</li></ul>
+<ul><li>✅ 后续接手项目更轻松</li></ul>
+<ul><li>✅ Codex 后续工作有规则可循</li></ul>
+<hr>
+<h1 id="附录">附录</h1>
+<h2 id="附录A第三方模型接入">附录 A：第三方模型接入</h2>
+<h3 id="CCSwitch">CC Switch</h3>
+<p>CC Switch 是一个第三方开源桌面工具，用来统一管理不同 Agent 工具（Claude Code、Codex、Gemini CLI）。</p>
+<p><strong>核心用途</strong>：</p>
+<ul><li>Provider 切换（从官方 API 切到中转 API）</li></ul>
+<ul><li>MCP 统一管理</li></ul>
+<ul><li>Skills 管理</li></ul>
+<h3 id="接入DeepSeek示例">接入 DeepSeek 示例</h3>
+<p>1. 在 DeepSeek 官网创建 API Key 2. 打开 CC Switch，点击添加模型 3. 粘贴 API Key 4. 开启本地路由映射 5. 进入设置，将路由全部打开 6. 点击启用</p>
+<blockquote>⚠️ 这类方式不属于 OpenAI 官方功能。能否正常使用、模型能力、兼容性、费用和隐私规则，以第三方工具和模型服务商为准。</blockquote>
+<hr>
+<h2 id="附录B推荐Skill清单">附录 B：推荐 Skill 清单</h2>
+<div class="table-wrap"><table>
+<tr><th>Skill / 项目</th><th>主要作用</th><th>GitHub 地址</th></tr>
+<tr><td>Superpowers</td><td>给 Coding Agent 加一整套&quot;软件开发方法论&quot;：先澄清需求、写规格、做实现计划，再按 TDD / 任务拆分推进开发。适合 Codex、Claude Code、Cursor、Gemini CLI 等工程型 Agent</td><td>https://github.com/obra/superpowers</td></tr>
+<tr><td>skill-creator</td><td>创建 Skill 的辅助 Skill。Codex 内置或可用的 Skill 以你当前环境显示为准</td><td>以当前 Codex Skill 列表为准</td></tr>
+<tr><td>baoyu-skills</td><td>宝玉整理的一组实用 Skills，偏内容创作和日常效率：小红书图文、文章配图、漫画、公众号发布、X/微博发布、网页转 Markdown、YouTube 字幕、AI 生图等</td><td>https://github.com/JimLiu/baoyu-skills</td></tr>
+<tr><td>Agent Reach</td><td>给 Agent 装&quot;联网能力&quot;：读网页、YouTube、RSS、GitHub、Twitter/X、B站、Reddit、小红书、LinkedIn 等</td><td>https://github.com/Panniantong/Agent-Reach</td></tr>
+<tr><td>find-skills</td><td>&quot;找 Skill 的 Skill&quot;。当你问&quot;有没有某某功能的 Skill&quot;时，它会帮你搜索、发现、安装 Agent Skills</td><td>https://github.com/vercel-labs/skills/tree/main/skills/find-skills</td></tr>
+</table></div>
+<blockquote>💡 不同来源的同名 Skill 可能实现不同，建议按需安装。</blockquote>
+<hr>
+<h2 id="附录C指令速查表">附录 C：指令速查表</h2>
+<div class="table-wrap"><table>
+<tr><th>场景</th><th>指令格式</th></tr>
+<tr><td>制定计划</td><td>&quot;请先制定执行计划，确认后再执行&quot;</td></tr>
+<tr><td>/plan 模式</td><td><code>/plan</code></td></tr>
+<tr><td>安装 Skill</td><td>&quot;把这个 Skill 安装一下：【GitHub 地址】&quot;</td></tr>
+<tr><td>触发 Skill</td><td><code>/skill-name 【参数】</code> 或 <code>$skill-name</code></td></tr>
+<tr><td>查看 Skill 列表</td><td><code>/skills</code> 或 <code>$</code></td></tr>
+<tr><td>创建 Skill</td><td><code>$skill-creator</code></td></tr>
+<tr><td>查看插件列表</td><td><code>/plugins</code></td></tr>
+<tr><td>查看 MCP</td><td><code>/mcp</code></td></tr>
+<tr><td>添加 MCP</td><td><code>codex mcp add 名称 -- 启动命令</code></td></tr>
+<tr><td>查看 MCP 列表</td><td><code>codex mcp list</code></td></tr>
+<tr><td>删除 MCP</td><td><code>codex mcp remove 名称</code></td></tr>
+<tr><td>查看变更</td><td>&quot;请展示本次修改的 diff&quot;</td></tr>
+<tr><td>提交代码</td><td>&quot;git add -A &amp;&amp; git commit -m &#x27;【说明】&#x27; &amp;&amp; git push&quot;</td></tr>
+<tr><td>运行测试</td><td>&quot;npm run test &amp;&amp; npm run build&quot;</td></tr>
+<tr><td>代码审查</td><td>&quot;请审查最近的代码变更，评分 A/B/C/D&quot;</td></tr>
+</table></div>
+<hr>
+<h2 id="附录D常见问题与避坑指南">附录 D：常见问题与避坑指南</h2>
+<h3 id="安装与启动">安装与启动</h3>
+<div class="table-wrap"><table>
+<tr><th>问题</th><th>解决方法</th></tr>
+<tr><td>安装后无法启动</td><td>检查系统版本是否满足要求；Windows 需管理员身份运行</td></tr>
+<tr><td>登录后没反应</td><td>检查网络连接；尝试切换登录方式</td></tr>
+<tr><td>项目目录选错了</td><td>在设置中修改项目目录</td></tr>
+<tr><td>Windows 系统目录报错</td><td>不要在系统目录里运行 Codex，新建练习目录</td></tr>
+</table></div>
+<h3 id="权限与安全">权限与安全</h3>
+<div class="table-wrap"><table>
+<tr><th>问题</th><th>解决方法</th></tr>
+<tr><td>Codex 改了不该改的文件</td><td>让 Codex 先出计划，确认后再执行；用 Git commit 备份</td></tr>
+<tr><td>担心代码丢失</td><td>每次大改前先 <code>git commit</code></td></tr>
+<tr><td>重要项目被误操作</td><td>不要直接选重要项目作为练习目录</td></tr>
+<tr><td>AI 乱删文件</td><td>在全局 AGENTS.md 加入&quot;禁止批量删除&quot;规则</td></tr>
+</table></div>
+<h3 id="功能使用">功能使用</h3>
+<div class="table-wrap"><table>
+<tr><th>问题</th><th>解决方法</th></tr>
+<tr><td>Skill 触发不了</td><td>确认 Skill 已安装；用 <code>/</code> 或 <code>$</code> 触发</td></tr>
+<tr><td>插件连接失败</td><td>检查第三方工具的订阅和授权状态</td></tr>
+<tr><td>代码运行报错</td><td>检查环境依赖是否安装完整</td></tr>
+<tr><td>MCP 没显示</td><td>检查 <code>codex mcp list</code>；可能需要重启 Codex CLI</td></tr>
+<tr><td>Codex 顺手重构</td><td>提前说&quot;不要重构无关代码&quot;</td></tr>
+</table></div>
+<h3 id="模型与额度">模型与额度</h3>
+<div class="table-wrap"><table>
+<tr><th>问题</th><th>解决方法</th></tr>
+<tr><td>额度消耗太快</td><td>简单任务少轮对话；复杂任务集中处理</td></tr>
+<tr><td>模型响应慢</td><td>检查网络；减少一次性请求范围</td></tr>
+<tr><td>想用第三方模型</td><td>参考 附录 A：CC Switch + DeepSeek</td></tr>
+</table></div>
+<hr>
+<h2 id="附录E版本记录">附录 E：版本记录</h2>
+<div class="table-wrap"><table>
+<tr><th>版本</th><th>日期</th><th>说明</th></tr>
+<tr><td>v1.0</td><td>2026-06-22</td><td>初始版本（~200页）</td></tr>
+<tr><td>v2.0</td><td>2026-07-06</td><td>全面迭代：精简内容、删除不存在功能、聚焦 Codex 实际能力；深挖现有功能；增加场景化指南；增加实战案例至 7 个；从原版找回有价值内容；新增推荐 Skill 清单</td></tr>
+<tr><td>v2.1</td><td>2026-07-06</td><td>新增&quot;0.4 已知限制与诚实建议&quot;章节；优化 PDF 分页排版；压缩联系方式页；GitHub Pages 在线阅读上线</td></tr>
+</table></div>
+<hr>
+<p><em>本橙皮书为非官方指南，持续更新中。</em> <em>如有问题或建议，欢迎反馈。</em></p>
+
+</body>
+</html>

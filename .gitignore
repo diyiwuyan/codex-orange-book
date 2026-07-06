@@ -1,0 +1,20 @@
+# 临时文件
+*.tmp
+*.bak
+*.log
+.DS_Store
+
+# Python 缓存
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node 依赖
+node_modules/
+package.json
+package-lock.json
+
+# 工作记忆
+.workbuddy/
+.claude/
