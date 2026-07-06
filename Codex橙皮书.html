@@ -644,6 +644,7 @@
 <pre><code>D:\AI-Codex-Projects\     ← Windows
 ~/AI-Codex-Projects/      ← macOS</code></pre>
 <blockquote>⚠️ Windows 用户第一次使用时，建议不要在系统目录里运行 Codex。</blockquote>
+<figure class="img-figure"><img src="imgs/codex-02-projectdir.png" alt="创建项目 / 选择项目目录"><figcaption>创建项目 / 选择项目目录</figcaption></figure>
 <h3 id="界面布局">界面布局</h3>
 <p>Codex App 的界面分为几个核心区域：</p>
 <div class="table-wrap"><table>
@@ -652,6 +653,7 @@
 <tr><td><strong>主对话区</strong></td><td>任务标题、消息列表、输入区</td></tr>
 <tr><td><strong>右侧面板</strong></td><td>代码变更预览（diff）、文件列表</td></tr>
 </table></div>
+<figure class="img-figure"><img src="imgs/codex-01-main.png" alt="Codex App 主界面"><figcaption>Codex App 主界面</figcaption></figure>
 <h3 id="输入方式">输入方式</h3>
 <p>Codex 的工作方式是对话 + 操作结合：</p>
 <ul><li>你在输入区用自然语言描述需求</li></ul>
@@ -723,10 +725,12 @@ codex</code></pre>
 等我确认后，再开始执行。</code></pre>
 <p>也可以直接输入 <code>/plan</code>，先让 Codex 输出计划，再决定是否执行。</p>
 <blockquote>💡 <strong>使用建议</strong>：任何复杂任务都先用计划模式。先确认方向正确，再让 Codex 动手，能避免大量返工。</blockquote>
+<figure class="img-figure"><img src="imgs/codex-03-plan.png" alt="/plan 触发计划模式"><figcaption>/plan 触发计划模式</figcaption></figure>
 <hr>
 <h2 id="33插件系统">3.3 插件系统</h2>
 <h3 id="插件是什么">插件是什么</h3>
 <p>插件是给 Codex 额外安装的&quot;能力包&quot;，让它连接更多工具、使用固定流程、获得专项能力。</p>
+<figure class="img-figure"><img src="imgs/codex-04-plugins.png" alt="插件市场 / 已安装插件列表"><figcaption>插件市场 / 已安装插件列表</figcaption></figure>
 <h3 id="常见插件和能力方向">常见插件和能力方向</h3>
 <p>插件目录会随着 Codex 版本、工作区和账号权限变化。下面不是固定排名，而是常见能力方向，实际可安装内容以你当前 Codex 插件页显示为准。</p>
 <div class="table-wrap"><table>
@@ -784,6 +788,7 @@ codex</code></pre>
 <tr><td>读取 GitHub issue / PR</td><td>MCP</td></tr>
 <tr><td>连接 Notion、内部知识库</td><td>MCP</td></tr>
 </table></div>
+<figure class="img-figure"><img src="imgs/codex-06-skill.png" alt="输入 `/` 调起 Skill / 命令菜单"><figcaption>输入 `/` 调起 Skill / 命令菜单</figcaption></figure>
 <h3 id="Skill通常包含什么">Skill 通常包含什么</h3>
 <div class="table-wrap"><table>
 <tr><th>内容</th><th>作用</th></tr>
@@ -870,6 +875,7 @@ description: 当用户需要生成 README、项目说明、安装教程、启动
 <ul><li>MCP = 给他接上不同工具的插座</li></ul>
 <ul><li>MCP Server = 插在插座上的工具箱</li></ul>
 <ul><li>Tool = 工具箱里的具体工具</li></ul>
+<figure class="img-figure"><img src="imgs/codex-07-mcp.png" alt="MCP 连接器状态列表"><figcaption>MCP 连接器状态列表</figcaption></figure>
 <h3 id="MCP适合做什么">MCP 适合做什么</h3>
 <div class="table-wrap"><table>
 <tr><th>场景</th><th>MCP 可以怎么用</th></tr>
@@ -972,6 +978,7 @@ args = [&quot;-y&quot;, &quot;@upstash/context7-mcp&quot;]</code></pre>
 <tr><td>团队协作</td><td>需要 PR、review、merge</td></tr>
 </table></div>
 <blockquote>一句话：没有 Git，Codex 改错了你很难回退。有了 Git，Codex 可以放心试，你可以随时检查和恢复。</blockquote>
+<figure class="img-figure"><img src="imgs/codex-05-diff.png" alt="Codex 中的代码 diff 视图"><figcaption>Codex 中的代码 diff 视图</figcaption></figure>
 <h3 id="如何在Codex中使用Git">如何在 Codex 中使用 Git</h3>
 <div class="table-wrap"><table>
 <tr><th>步骤</th><th>操作</th><th>目的</th></tr>
