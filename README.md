@@ -10,7 +10,7 @@
 | 格式 | 链接 | 说明 |
 |------|------|------|
 | **在线阅读** | [GitHub Pages](https://diyiwuyan.github.io/codex-orange-book/) | 精美排版，无需下载 |
-| **PDF 下载** | [Codex橙皮书.pdf](Codex橙皮书.pdf) | 65 页 · 5MB |
+| **PDF 下载** | [Codex橙皮书.pdf](Codex橙皮书.pdf) | 69 页 · 5MB |
 | **Markdown 原稿** | [Codex橙皮书.md](Codex橙皮书.md) | 完整源文件 |
 
 ## 内容结构
@@ -39,7 +39,7 @@
 | `index.html` | GitHub Pages 在线阅读入口页 |
 | `Codex橙皮书.md` | Markdown 原稿 |
 | `Codex橙皮书.html` | 精美排版 HTML |
-| `Codex橙皮书.pdf` | PDF 版本（65 页） |
+| `Codex橙皮书.pdf` | PDF 版本（69 页） |
 | `codex-md2html.py` | Markdown → HTML 转换脚本（含分页优化） |
 | `codex-generate-pdf.js` | Playwright PDF 生成脚本 |
 | `md2html.py` | 基础 Markdown → HTML 转换器 |
@@ -78,4 +78,3 @@ CC BY-NC-SA 4.0（署名-非商业性使用-相同方式共享）
 
 - v2.1 · 2026.07.06 — 新增「已知限制与诚实建议」章节；GitHub Pages 在线阅读上线；优化 PDF 分页排版；嵌入 7 张 Codex 界面截图
 - v2.0 · 2026.07.06 — 全面迭代：精简内容、删除不存在功能、聚焦 Codex 实际能力；增加实战案例至 7 个；新增推荐 Skill 清单
-- v1.0 · 2026.06.22 — 初始版本
